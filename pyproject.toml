@@ -39,8 +39,9 @@ build-verbosity = "3"
 [tool.setuptools.package-data]
 "VBMicrolensing.data" = ["data/*"]
 
-
-
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
 
 
 
