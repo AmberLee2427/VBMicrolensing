@@ -7,6 +7,7 @@
 *.lo
 *.o
 *.obj
+build/
 
 # Precompiled Headers
 *.gch
@@ -40,3 +41,19 @@
 *.iml
 out
 gen
+
+# python cache files
+__pycache__/
+*/__pycache__/
+tests/__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+.cache/
+.ipynb_checkpoints
+.pyre/
+.mypy_cache/
+.dmypy.json
+.pytype/
+.pytype/

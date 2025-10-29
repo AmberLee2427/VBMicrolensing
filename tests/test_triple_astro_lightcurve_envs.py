@@ -105,20 +105,40 @@ def _installed_package_env() -> dict:
 @contextlib.contextmanager
 def _extension_available_in_repo():
     """Temporarily ensure the compiled extension exists inside the repository tree."""
-    core_module = importlib.import_module("VBMicrolensing.VBMicrolensing")
-    so_path = Path(core_module.__file__)
+    candidate_paths = []
+    import site
+
+    for base in site.getsitepackages():
+        candidate = Path(base) / "VBMicrolensing" / "VBMicrolensing.so"
+        candidate_paths.append(candidate)
+    user_candidate = Path(site.getusersitepackages()) / "VBMicrolensing" / "VBMicrolensing.so"
+    candidate_paths.append(user_candidate)
+
+    so_path = None
+    for candidate in candidate_paths:
+        if candidate.exists():
+            so_path = candidate
+            break
+
+    if so_path is None:
+        # Fallback: import whatever is available (likely the repo build)
+        core_module = importlib.import_module("VBMicrolensing.VBMicrolensing")
+        so_path = Path(core_module.__file__)
+
     target_dir = REPO_ROOT / "VBMicrolensing"
     target_dir.mkdir(exist_ok=True)
     target_path = target_dir / so_path.name
     exists_before = target_path.exists()
     backup_bytes = target_path.read_bytes() if exists_before else None
-    shutil.copy2(so_path, target_path)
+
+    if target_path.resolve() != so_path.resolve():
+        shutil.copy2(so_path, target_path)
     try:
         yield
     finally:
         if exists_before and backup_bytes is not None:
             target_path.write_bytes(backup_bytes)
-        elif not exists_before:
+        elif not exists_before and target_path.exists():
             with contextlib.suppress(FileNotFoundError):
                 target_path.unlink()
 
@@ -160,7 +180,6 @@ SCENARIOS = [
             cwd=PROJECT_PARENT,
         ),
         id="wheel-triple-astro",
-        marks=pytest.mark.xfail(reason="TripleAstroLightCurve still crashes when using the installed wheel"),
     ),
     pytest.param(
         Scenario(
@@ -185,7 +204,6 @@ SCENARIOS = [
             prep=_extension_available_in_repo,
         ),
         id="repo-triple-astro",
-        marks=pytest.mark.xfail(reason="TripleAstroLightCurve still crashes when run from the repo checkout"),
     ),
 ]
 
