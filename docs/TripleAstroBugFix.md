@@ -79,3 +79,8 @@ The segfault was never about missing aux data or precision flags. It was an acci
 ## TL;DR
 
 Delete line 5450 in `VBMicrolensing.cpp` and local wheel builds should work like Valerio's set up; `pip install .` from inside a VBM clone.
+
+## Attachments
+
+TripleAstroBugLog.md <- testing log
+test_triple_astro_lightcurve_envs.py <- updated test file, expecting success
