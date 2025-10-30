@@ -25,8 +25,10 @@ runs or download logs from failing builds.
 ## Reproducing the CMake-local job locally
 
 ```bash
-python -m pip install --upgrade pip numpy pybind11 pytest
-cmake -S . -B build -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+python -m pip install --upgrade pip numpy "pybind11[global]" pytest
+PYTHON_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+PYBIND11_CMAKE_DIR="$(python -m pybind11 --cmakedir)"
+cmake -S . -B build -DPython3_EXECUTABLE="${PYTHON_EXECUTABLE}" -Dpybind11_DIR="${PYBIND11_CMAKE_DIR}"
 cmake --build build --config Release
 rm -f VBMicrolensing/VBMicrolensing*.so
 cp build/VBMicrolensing*.so VBMicrolensing/

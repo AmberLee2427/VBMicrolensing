@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "VBMicrolensing" / "data"
 EXTENSION_NAME = "VBMicrolensing.VBMicrolensing"
 _EXTENSION_MODULE = None
+_EXTENSION_SUFFIXES = (".so", ".pyd", ".dylib", ".dll")
 
 
 def _site_package_dirs() -> list[Path]:
@@ -40,10 +41,14 @@ def _find_extension_candidates() -> list[Path]:
     for base in _site_package_dirs():
         pkg_dir = base / "VBMicrolensing"
         if pkg_dir.is_dir():
-            candidates.extend(pkg_dir.glob("VBMicrolensing*.so"))
+            for path in pkg_dir.glob("VBMicrolensing*"):
+                if path.is_file() and path.suffix in _EXTENSION_SUFFIXES:
+                    candidates.append(path)
     build_dir = ROOT / "build"
     if build_dir.exists():
-        candidates.extend(build_dir.glob("**/VBMicrolensing*.so"))
+        for path in build_dir.glob("**/VBMicrolensing*"):
+            if path.is_file() and path.suffix in _EXTENSION_SUFFIXES:
+                candidates.append(path)
     seen: set[Path] = set()
     unique: list[Path] = []
     for candidate in candidates:

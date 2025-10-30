@@ -58,8 +58,10 @@ jobs:
               python -m pip install dist/*.whl
               ;;
             cmake-local)
-              python -m pip install numpy pybind11 pytest
-              cmake -S . -B build -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+              python -m pip install numpy "pybind11[global]" pytest
+              PYTHON_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+              PYBIND11_CMAKE_DIR="$(python -m pybind11 --cmakedir)"
+              cmake -S . -B build -DPython3_EXECUTABLE="${PYTHON_EXECUTABLE}" -Dpybind11_DIR="${PYBIND11_CMAKE_DIR}"
               cmake --build build --config Release
               rm -f VBMicrolensing/VBMicrolensing*.so || true
               cp build/VBMicrolensing*.so VBMicrolensing/
