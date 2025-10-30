@@ -32,6 +32,14 @@
 *.out
 *.app
 
+# Python artefacts
+__pycache__/
+*.py[cod]
+
+# Build outputs
+/build/
+/coverage/
+
 ### Example user template template
 ### Example user template
 

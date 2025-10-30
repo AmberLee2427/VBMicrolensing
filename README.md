@@ -58,3 +58,17 @@ We also provide some [examples](examples) showing the capabilities of the packag
 ## License
 VBMicrolensing is freely available to the community under the 
 GNU Lesser General Public License Version 3 included in this repository.
+
+## Coverage Report
+
+```bash
+mkdir -p coverage
+gcovr --root . --object-directory build --filter ".*VBMicrolensing/lib/.*" --gcov-ignore-errors=no_working_dir_found --exclude-directories ".*/CMakeFiles/[0-9].*"
+```
+
+HTML coverage report:
+
+```bash
+gcovr --root . --object-directory build --filter ".*VBMicrolensing/lib/.*" --gcov-ignore-errors=no_working_dir_found --exclude-directories ".*/CMakeFiles/[0-9].*" --html-details -o coverage/cpp_coverage.html
+```
+
