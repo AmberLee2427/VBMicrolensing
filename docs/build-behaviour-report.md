@@ -1,83 +1,87 @@
-# CI Build Behaviour Report
+# Build Behaviour Snapshot
 
-## Overview
+This note records what we see when the GitHub Actions workflow
+`.github/workflows/test-matrix.yml` runs. VBMicrolensing (VBM) is a C++ engine
+for microlensing calculations that we drive from Python through a compiled
+extension module. Depending on how that extension is built we surface different
+bugs, so the workflow exercises the major installation styles:
 
-The GitHub Actions matrix in `.github/workflows/test-matrix.yml` now exercises
-six environments:
+- **Editable install** (`pip install -e .`): Python loads the module that CMake
+  or scikit-build put under `build/`.
+- **Wheel install** (`python -m build && pip install dist/*.whl`): Python loads
+  the pre-built module that would ship on PyPI.
+- **CMake local build** (`cmake … && PYTHONPATH=repo pytest`): we mimic the
+  manual build that many collaborators use on macOS to pick up the more stable
+  solver configuration; this can select different compilers or optimisations
+  compared with the wheel.
 
-| Label | OS / Runner | Python | Install Mode | Extension path observed in logs |
+## Current matrix (run id `7a73372`)
+
+| Label | OS / runner | Python | Install style | Extension loaded |
 | --- | --- | --- | --- | --- |
-| `ubuntu-editable` | `ubuntu-latest` | 3.10 | `pip install -e .` | `/home/runner/work/.../build/VBMicrolensing.so` |
-| `ubuntu-wheel` | `ubuntu-latest` | 3.12 | `pip-wheel` (local wheel install) | `/opt/hostedtoolcache/.../site-packages/VBMicrolensing/VBMicrolensing.so` |
-| `macos-wheel` | `macos-14` | 3.12 | `pip-wheel` | `/Library/Frameworks/.../site-packages/VBMicrolensing/VBMicrolensing.so` |
-| `macos-cmake-13` | `macos-13` | 3.11 | `cmake-local` | `/Users/runner/work/.../build/VBMicrolensing.so` |
-| `macos-cmake-15` | `macos-15` | 3.12 | `cmake-local` | `/Users/runner/work/.../build/VBMicrolensing.so` |
-| `windows-wheel` | `windows-latest` | 3.11 | `pip-wheel` | `C:\hostedtoolcache\...\site-packages\VBMicrolensing\VBMicrolensing.pyd` |
+| `ubuntu-editable` | `ubuntu-latest` | 3.10 | editable | `/home/runner/work/.../build/VBMicrolensing.so` |
+| `ubuntu-wheel` | `ubuntu-latest` | 3.12 | wheel | `/opt/hostedtoolcache/.../site-packages/VBMicrolensing/VBMicrolensing.so` |
+| `macos-wheel` | `macos-14` | 3.12 | wheel | `/Library/Frameworks/.../site-packages/VBMicrolensing/VBMicrolensing.so` |
+| `macos-cmake-13` | `macos-13` | 3.11 | cmake-local | `/Users/runner/work/.../build/VBMicrolensing.so` |
+| `macos-cmake-15` | `macos-15` | 3.12 | cmake-local | `/Users/runner/work/.../build/VBMicrolensing.so` |
+| `windows-wheel` | `windows-latest` | 3.11 | wheel | `C:\hostedtoolcache\...\site-packages\VBMicrolensing\VBMicrolensing.pyd` |
 
-Key regressions surfaced repeatedly across the suite (references point to the
-tests documenting the behaviour):
+All logs for the run live under `tests/CI logs/7a73372-test_matrix/`.
 
-- `BinaryLightCurveKepler` still returns static magnifications and NaN offsets,
-  failing the orbital-signal expectation (`tests/test_vbmicrolensing_expectations.py:32`).
-  The `cmake-local` job additionally times out in the parity test before we xfail
-  it (`tests/test_vbmicrolensing.py:126`).
-- `CombineCentroids` disagrees between build artefacts: wheels produce NaNs,
-  while locally built extensions collapse to zero offsets
-  (`tests/test_vbmicrolensing_expectations.py:61`, `tests/test_vbmicrolensing_expectations.py:107`).
-- Switching the contour solver with `SetMethod` continues to segfault before
-  `MultiMag2` returns (`tests/test_vbmicrolensing_expectations.py:143`).
-- `BinaryMagMultiDark` still aborts the interpreter when exercised through the
-  bindings (`tests/test_vbmicrolensing_expectations.py:125`).
-- `BinaryLightCurveOrbital` returns two distinct result sets depending on which
-  shared object is imported (`TODO.md:8`); the suite currently accepts either
-  outcome (`tests/test_vbmicrolensing.py:159`).
+## Highlights in plain language
 
-## Environment-by-Scenario Matrix
+- **BinaryLightCurveKepler (Keplerian binary light curve)**  
+  Every build still falls back to the flat, static solution with NaN offsets.
+  On the macOS CMake builds the solver now also stalls long enough for our
+  guard to xfail (`tests/test_vbmicrolensing.py:126`).
 
-`✓` indicates an expected pass, `✗` names the failure mode observed in CI,
-`~` marks skips due to the harness not being able to exercise the scenario. Xfail
-rows are considered signal: we deliberately keep those tests so the logs record
-the regression.
+- **BinaryLightCurveOrbital**  
+  The same inputs produce two families of answers: wheels (site-packages) use
+  the full orbital solver, while editable / CMake builds stick to the static
+  branch noted in `TODO.md:8`. The regression test accepts either set so that
+  both behaviours are documented but the suite still finishes.
 
-| Scenario | ubuntu-editable (3.10) | ubuntu-wheel (3.12) | macos-wheel (3.12) | macos-cmake-13 (3.11) | macos-cmake-15 (3.12) | windows-wheel (3.11) |
+- **CombineCentroids (astrometric centroid combiner)**  
+  Wheels on Linux, macOS, and Windows return NaNs; locally compiled modules
+  collapse to zeros. Both outcomes remain marked xfail so we keep collecting the
+  failure codes.
+
+- **BinaryMagMultiDark (limb-darkened magnifications)**  
+  Calling this through the Python wrapper still causes Python itself to exit
+  abruptly (process abort). The expectation test stays xfailed so we can keep
+  spotting that regression.
+
+- **SetMethod → MultiMag2 (switching contour solvers)**  
+  Flipping `SetMethod` to `Multipoly` or `Nopoly` still crashes before we get a
+  magnification back. Every environment hits the same fault.
+
+## Scenario-by-scenario table
+
+Legend: “OK” means the parity test currently passes, “Fail” gives the symptom
+we observe, and “n/a” means the environment cannot exercise that path (for
+example because no local build artefact exists).
+
+| Scenario | ubuntu-editable (3.10 editable) | ubuntu-wheel (3.12 wheel) | macos-wheel (3.12 wheel) | macos-cmake-13 (3.11 CMake) | macos-cmake-15 (3.12 CMake) | windows-wheel (3.11 wheel) |
 | --- | --- | --- | --- | --- | --- | --- |
-| `BinaryLightCurveKepler` orbital signal (`tests/test_vbmicrolensing_expectations.py::test_binary_light_curve_kepler_has_orbital_signal`) | ✗ static mags + NaNs | ✗ static mags + NaNs | ✗ static mags + NaNs | ✗ static mags + NaNs | ✗ static mags + NaNs | ✗ static mags + NaNs |
-| `BinaryLightCurveKepler` parity suite (`tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves`) | ✓ returns static branch | ✓ returns static branch | ✓ returns orbital branch | ✗ times out (xfail) | ✗ times out (xfail) | ✓ returns orbital branch |
-| `BinaryLightCurveOrbital` outputs (`tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves`) | Static magnification path | Static magnification path | Orbital solver path¹ | Static magnification path | Static magnification path | Orbital solver path¹ |
-| `CombineCentroids` with wheel extension (`tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series`) | ✗ NaNs (xfail) | ✗ NaNs (xfail) | ✗ NaNs (xfail) | ~ skipped (no wheel artefact on path) | ~ skipped (no wheel artefact on path) | ✗ NaNs (xfail) |
-| `CombineCentroids` with local build (`tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series_local`) | ✗ zero offsets (xfail) | ~ skipped (no local artefact) | ✗ zero offsets (xfail) | ✗ zero offsets (xfail) | ✗ zero offsets (xfail) | ~ skipped (no local artefact) |
-| `BinaryMagMultiDark` subprocess guard (`tests/test_vbmicrolensing_expectations.py::test_binary_mag_multi_dark_populates_outputs`) | ✗ interpreter abort (xfail) | ✗ interpreter abort (xfail) | ✗ interpreter abort (xfail) | ✗ interpreter abort (xfail) | ✗ interpreter abort (xfail) | ✗ interpreter abort (xfail) |
-| `SetMethod` → `MultiMag2` (`tests/test_vbmicrolensing_expectations.py::test_set_method_multi_mag2_stability`) | ✗ segfault before return (xfail) | ✗ segfault before return (xfail) | ✗ segfault before return (xfail) | ✗ segfault before return (xfail) | ✗ segfault before return (xfail) | ✗ segfault before return (xfail) |
+| `BinaryLightCurveKepler` orbital signal (`tests/test_vbmicrolensing_expectations.py::test_binary_light_curve_kepler_has_orbital_signal`) | Fail – stays at static mags, NaNs | Fail – stays at static mags, NaNs | Fail – stays at static mags, NaNs | Fail – stays at static mags, NaNs | Fail – stays at static mags, NaNs | Fail – stays at static mags, NaNs |
+| `BinaryLightCurveKepler` parity suite (`tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves`) | OK – static branch | OK – static branch | OK – orbital branch | Fail – solver stalls (xfail) | Fail – solver stalls (xfail) | OK – orbital branch |
+| `BinaryLightCurveOrbital` outputs (`tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves`) | Static branch | Static branch | Orbital branch¹ | Static branch | Static branch | Orbital branch¹ |
+| `CombineCentroids` with wheel module (`tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series`) | Fail – NaNs (xfail) | Fail – NaNs (xfail) | Fail – NaNs (xfail) | n/a | n/a | Fail – NaNs (xfail) |
+| `CombineCentroids` with local module (`tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series_local`) | Fail – zeros (xfail) | n/a | Fail – zeros (xfail) | Fail – zeros (xfail) | Fail – zeros (xfail) | n/a |
+| `BinaryMagMultiDark` subprocess guard (`tests/test_vbmicrolensing_expectations.py::test_binary_mag_multi_dark_populates_outputs`) | Fail – Python exits (xfail) | Fail – Python exits (xfail) | Fail – Python exits (xfail) | Fail – Python exits (xfail) | Fail – Python exits (xfail) | Fail – Python exits (xfail) |
+| `SetMethod` then `MultiMag2` (`tests/test_vbmicrolensing_expectations.py::test_set_method_multi_mag2_stability`) | Fail – crash before return (xfail) | Fail – crash before return (xfail) | Fail – crash before return (xfail) | Fail – crash before return (xfail) | Fail – crash before return (xfail) | Fail – crash before return (xfail) |
 
-Notes:
+¹ Matches the discrepancy described in `TODO.md:8`; we allow both answers in the
+regression test so that runs on either build style continue to report useful
+results.
 
-- Wheel jobs delete the `build/` tree before running pytest so the discovery
-  logic exercises the site-packages wheel rather than the in-tree artefact.
-- Windows now participates in the CombineCentroids wheel check because
-  `_discover_extension_candidates` accepts `.pyd` modules; the local-only test
-  still skips on wheel jobs where no build artefact exists.
-- macOS-13 runners are flagged for deprecation, so the matrix also runs the
-  CMake scenario on `macos-15`; both exhibit the same Kepler timeout and orbital
-  static-path behaviour for now.
+## Using this information
 
-¹ Behaviour taken from the reproducible discrepancy noted in `TODO.md:8`; the
-  tests accept either branch to keep both builds green.
-
-## Suggested Bug Report Outline
-
-1. **Title:** “Divergent VBMicrolensing behaviours across wheel vs local builds”
-2. **Summary:** Briefly list the major discrepancies (Kepler orbital solver,
-   CombineCentroids, SetMethod, BinaryMagMultiDark) with links to the tests and
-   CI logs under `tests/CI logs/03b338d-test_matrix/`.
-3. **Impact:** Mention that users installing from PyPI see different scientific
-   outputs (NaNs, orbital curves) than collaborators running CMake builds,
-   leading to inconsistent modelling results and sporadic crashes.
-4. **Reproduction:** Provide the relevant pytest invocation snippets per build
-   style (`pip install -e .`, wheel install, CMake + `PYTHONPATH`).
-5. **Attachments:** Include or link to the captured logs and the matrix table
-   above so non-pytest users can scan the outcomes quickly.
-
-Once Valerio (or other collaborators) are ready to dig into a specific failure,
-the xfail markers in the code point directly at the minimal reproductions used
-by the test suite. Feel free to reference the table in future issues when
-triaging platform-specific bug reports.
+- When filing a bug or responding to user reports, note which build method they
+  used. Pip wheels (PyPI installs) and local CMake builds have different failure
+  modes.
+- The artefacts uploaded by the workflow (`pytest-log-<os>-py<version>-<mode>`)
+  contain the full test output for each environment if deeper triage is needed.
+- If you reproduce one of these issues locally, copy the relevant snippet from
+  the tests listed in the table—they are the shortest scripts we have that hit
+  each bug.

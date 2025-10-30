@@ -1,0 +1,38 @@
+#https://github.com/AmberLee2427/VBMicrolensing/actions/runs/18956497837
+Annotations
+7 notices
+pip-wheel • py3.12 • ubuntu-latest
+VBMicrolensing extension loaded from /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/VBMicrolensing/VBMicrolensing.so
+pip-wheel • py3.12 • macos-14
+VBMicrolensing extension loaded from /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/VBMicrolensing/VBMicrolensing.so
+editable • py3.10 • ubuntu-latest
+VBMicrolensing extension loaded from /home/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.12 • macos-15
+VBMicrolensing extension loaded from /Users/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+VBMicrolensing extension loaded from /Users/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+The macOS-13 based runner images are being deprecated, consider switching to macOS-15 (macos-15-intel) or macOS 15 arm64 (macos-latest) instead. For more details see https://github.com/actions/runner-images/issues/13046
+pip-wheel • py3.11 • windows-latest
+VBMicrolensing extension loaded from C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\site-packages\VBMicrolensing\VBMicrolensing.pyd
+Artifacts
+Produced during runtime
+Name	Size	Digest	
+pytest-log-macos-13-py3.11-cmake-local
+933 Bytes	
+sha256:5356e906460a817d2203c46b2369fe0f31da5d1f26bdd215f813814fe4974edc
+pytest-log-macos-14-py3.12-pip-wheel
+958 Bytes	
+sha256:56f79d6fa75c1808f3f083628204483717781390d2715cbc0ae3aa8865d96461
+pytest-log-macos-15-py3.12-cmake-local
+934 Bytes	
+sha256:0b1ad3926c077234553386a77c899712f63048022491c1b9d3814e70c7e738aa
+pytest-log-ubuntu-latest-py3.10-editable
+927 Bytes	
+sha256:2adcc572e9ae7664c599679e94362bd81b4bda7889b8aea41a15b603daac9c1a
+pytest-log-ubuntu-latest-py3.12-pip-wheel
+953 Bytes	
+sha256:e57deb8b86d655ab03f7b27d2f1db7b8213fe327f010e4629a91895dbf891cd6
+pytest-log-windows-latest-py3.11-pip-wheel
+951 Bytes	
+sha256:bf58b9404a4df3182956d20d252acd12b9a4c7b7c682c3ad08c25361de4cead5

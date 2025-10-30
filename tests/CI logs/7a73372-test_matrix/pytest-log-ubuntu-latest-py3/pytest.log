@@ -1,0 +1,25 @@
+::notice::VBMicrolensing extension loaded from /home/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+============================= test session starts ==============================
+platform linux -- Python 3.10.18, pytest-8.4.2, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.10.18/x64/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/VBMicrolensing/VBMicrolensing
+configfile: pyproject.toml
+collecting ... collected 15 items
+
+tests/test_vbmicrolensing.py::test_load_tables_and_basic_magnifications PASSED [  6%]
+tests/test_vbmicrolensing.py::test_binary_magnifications_and_contours PASSED [ 13%]
+tests/test_vbmicrolensing.py::test_set_lens_geometry_and_caustics PASSED [ 20%]
+tests/test_vbmicrolensing.py::test_object_coordinate_variants PASSED     [ 26%]
+tests/test_vbmicrolensing.py::test_light_curve_basics PASSED             [ 33%]
+tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves PASSED [ 40%]
+tests/test_vbmicrolensing.py::test_bin_source_extensions PASSED          [ 46%]
+tests/test_vbmicrolensing.py::test_triple_light_curves PASSED            [ 53%]
+tests/test_vbmicrolensing.py::test_astrometric_outputs_and_combine PASSED [ 60%]
+tests/test_vbmicrolensing.py::test_flag_toggles PASSED                   [ 66%]
+tests/test_vbmicrolensing_expectations.py::test_binary_light_curve_kepler_has_orbital_signal XFAILs.) [ 73%]
+tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series XFAILults when using the wheel build.) [ 80%]
+tests/test_vbmicrolensing_expectations.py::test_combine_centroids_returns_finite_series_local XFAILt extension.) [ 86%]
+tests/test_vbmicrolensing_expectations.py::test_binary_mag_multi_dark_populates_outputs XFAIL [ 93%]
+tests/test_vbmicrolensing_expectations.py::test_set_method_multi_mag2_stability XFAILng from MultiMag2.) [100%]
+
+======================== 10 passed, 5 xfailed in 5.47s =========================
