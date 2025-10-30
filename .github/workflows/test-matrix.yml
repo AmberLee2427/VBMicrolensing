@@ -1,0 +1,102 @@
+name: Test Matrix
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.install-mode }} • py${{ matrix.python-version }} • ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python-version: "3.10"
+            install-mode: editable
+          - os: ubuntu-latest
+            python-version: "3.12"
+            install-mode: pip-wheel
+          - os: windows-latest
+            python-version: "3.11"
+            install-mode: pip-wheel
+          - os: macos-13
+            python-version: "3.11"
+            install-mode: cmake-local
+          - os: macos-14
+            python-version: "3.12"
+            install-mode: pip-wheel
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package (${{ matrix.install-mode }})
+        env:
+          INSTALL_MODE: ${{ matrix.install-mode }}
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip
+          case "${INSTALL_MODE}" in
+            editable)
+              python -m pip install -e .
+              ;;
+            pip-wheel)
+              python -m pip install build
+              python -m build --wheel --outdir dist
+              python -m pip install dist/*.whl
+              ;;
+            cmake-local)
+              python -m pip install numpy pybind11 pytest
+              cmake -S . -B build -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+              cmake --build build --config Release
+              rm -f VBMicrolensing/VBMicrolensing*.so || true
+              cp build/VBMicrolensing*.so VBMicrolensing/
+              ;;
+            *)
+              echo "Unknown install mode: ${INSTALL_MODE}" >&2
+              exit 1
+              ;;
+          esac
+          python -m pip install pytest
+
+      - name: Show environment
+        shell: bash
+        run: |
+          set -eux
+          python -c "import sys; print(f'python: {sys.version.split()[0]} ({sys.executable})')"
+          python -c "import platform; print(f'platform: {platform.platform()}')"
+
+      - name: Run tests (${{ matrix.install-mode }})
+        env:
+          INSTALL_MODE: ${{ matrix.install-mode }}
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p artifacts
+          if [ "${INSTALL_MODE}" = "cmake-local" ]; then
+            export PYTHONPATH="${GITHUB_WORKSPACE}${PYTHONPATH:+:${PYTHONPATH}}"
+          fi
+          python -m pytest -vv --maxfail=1 | tee artifacts/pytest.log
+          exit_code=${PIPESTATUS[0]}
+          printf '%s\n' "${exit_code}" > artifacts/pytest-exit-code.txt
+          exit "${exit_code}"
+
+      - name: Upload pytest log
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-log-${{ matrix.os }}-py${{ matrix.python-version }}-${{ matrix.install-mode }}
+          path: artifacts/
+          if-no-files-found: warn

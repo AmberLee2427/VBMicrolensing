@@ -14,6 +14,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "VBMicrolensing" / "data"
 EXTENSION_NAME = "VBMicrolensing.VBMicrolensing"
+_EXTENSION_MODULE = None
 
 
 def _site_package_dirs() -> list[Path]:
@@ -63,9 +64,11 @@ def _load_extension(path: Path):
     return module
 
 
-def ensure_extension() -> None:
+def ensure_extension():
+    global _EXTENSION_MODULE
     if EXTENSION_NAME in sys.modules:
-        return
+        _EXTENSION_MODULE = sys.modules[EXTENSION_NAME]
+        return _EXTENSION_MODULE
     candidates = _find_extension_candidates()
     if not candidates:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "."], cwd=ROOT)
@@ -74,9 +77,17 @@ def ensure_extension() -> None:
         raise RuntimeError("VBMicrolensing extension library not found")
     module = _load_extension(candidates[0])
     sys.modules[EXTENSION_NAME] = module
+    _EXTENSION_MODULE = module
+    return module
 
 
 ensure_extension()
+
+
+def pytest_sessionstart(session):
+    module = ensure_extension()
+    origin = getattr(module, "__file__", "<unknown>")
+    print(f"::notice::VBMicrolensing extension loaded from {origin}")
 
 
 @pytest.fixture(scope="session", autouse=True)
