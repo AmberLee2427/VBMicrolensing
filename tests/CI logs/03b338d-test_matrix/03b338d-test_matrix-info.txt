@@ -1,0 +1,32 @@
+Annotations
+6 notices
+pip-wheel • py3.12 • ubuntu-latest
+VBMicrolensing extension loaded from /home/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+pip-wheel • py3.12 • macos-14
+VBMicrolensing extension loaded from /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/VBMicrolensing/VBMicrolensing.so
+editable • py3.10 • ubuntu-latest
+VBMicrolensing extension loaded from /home/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+VBMicrolensing extension loaded from /Users/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+The macOS-13 based runner images are being deprecated, consider switching to macOS-15 (macos-15-intel) or macOS 15 arm64 (macos-latest) instead. For more details see https://github.com/actions/runner-images/issues/13046
+pip-wheel • py3.11 • windows-latest
+VBMicrolensing extension loaded from C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\site-packages\VBMicrolensing\VBMicrolensing.pyd
+Artifacts
+Produced during runtime
+Name	Size	Digest	
+pytest-log-macos-13-py3.11-cmake-local
+933 Bytes	
+sha256:286c3f85321c3e3ec9a749c515d08d80c300a790075c757e3c50ecbebeca39aa
+pytest-log-macos-14-py3.12-pip-wheel
+946 Bytes	
+sha256:05c2399478b00c7f3a6d927b49572639ac68de903deb0699748f1c4af833f7fe
+pytest-log-ubuntu-latest-py3.10-editable
+927 Bytes	
+sha256:a5f10ec0a15d8177bbab633fa79d5efe14e08b313ef87ef78188e0e9f33d0cdb
+pytest-log-ubuntu-latest-py3.12-pip-wheel
+926 Bytes	
+sha256:18ce90572750e8f79a5191b5c3ead038e7cd8e5ebeeab3c0ed6caa56d7e03d58
+pytest-log-windows-latest-py3.11-pip-wheel
+936 Bytes	
+sha256:1c9d37d896422f0602c90756d0b471180662c56312275ebee58989ffdd1dae21

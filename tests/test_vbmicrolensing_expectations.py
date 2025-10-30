@@ -13,6 +13,7 @@ import VBMicrolensing
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "VBMicrolensing" / "data"
+EXTENSION_SUFFIXES = (".so", ".pyd", ".dylib", ".dll")
 
 
 def _discover_extension_candidates() -> list[Path]:
@@ -21,18 +22,20 @@ def _discover_extension_candidates() -> list[Path]:
     for base in site.getsitepackages():
         pkg_dir = Path(base) / "VBMicrolensing"
         if pkg_dir.is_dir():
-            for so_path in pkg_dir.glob("VBMicrolensing*.so"):
-                real = so_path.resolve()
+            for candidate in pkg_dir.glob("VBMicrolensing*"):
+                if candidate.is_file() and candidate.suffix in EXTENSION_SUFFIXES:
+                    real = candidate.resolve()
+                    if real not in seen:
+                        seen.add(real)
+                        candidates.append(real)
+    build_dir = ROOT / "build"
+    if build_dir.exists():
+        for candidate in build_dir.glob("**/VBMicrolensing*"):
+            if candidate.is_file() and candidate.suffix in EXTENSION_SUFFIXES:
+                real = candidate.resolve()
                 if real not in seen:
                     seen.add(real)
                     candidates.append(real)
-    build_dir = ROOT / "build"
-    if build_dir.exists():
-        for so_path in build_dir.glob("**/VBMicrolensing*.so"):
-            real = so_path.resolve()
-            if real not in seen:
-                seen.add(real)
-                candidates.append(real)
     return sorted(candidates)
 
 

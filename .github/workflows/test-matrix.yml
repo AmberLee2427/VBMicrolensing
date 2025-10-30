@@ -28,6 +28,9 @@ jobs:
           - os: macos-13
             python-version: "3.11"
             install-mode: cmake-local
+          - os: macos-15
+            python-version: "3.12"
+            install-mode: cmake-local
           - os: macos-14
             python-version: "3.12"
             install-mode: pip-wheel
@@ -56,6 +59,7 @@ jobs:
               python -m pip install build
               python -m build --wheel --outdir dist
               python -m pip install dist/*.whl
+              rm -rf build
               ;;
             cmake-local)
               python -m pip install numpy "pybind11[global]" pytest
