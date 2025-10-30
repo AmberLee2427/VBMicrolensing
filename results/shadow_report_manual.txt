@@ -1,0 +1,1411 @@
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:549:50: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  549 | double VBMicrolensing::ESPLMag2(double u, double rho) {
+      |                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:550:55: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  550 |         static double Mag, u2, u2_1, u2_2, u2_4, s_u2_4, u6, rho2, quad;
+      |                                                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:550:51: warning: unused variable 'u6' [-Wunused-variable]
+  550 |         static double Mag, u2, u2_1, u2_2, u2_4, s_u2_4, u6, rho2, quad;
+      |                                                          ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:551:6: warning: unused variable 'c' [-Wunused-variable]
+  551 |         int c = 0;
+      |             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:584:15: warning: unused variable 'totNPS' [-Wunused-variable]
+  584 |         int nannold, totNPS = 1;
+      |                      ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:717:42: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  717 | double VBMicrolensing::BinaryMag0(double a1, double q1, double y1v, double y2v, _sols_for_skiplist_curve** Images) {
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:718:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  718 |         static complex a, q, m1, m2, y;
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:718:20: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  718 |         static complex a, q, m1, m2, y;
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:718:31: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  718 |         static complex a, q, m1, m2, y;
+      |                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:115: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:719:16: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  719 |         static double av = -1.0, qv = -1.0;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:167:19: note: previous declaration is here
+  167 |         double y_1, y_2, av, therr, astrox1, astrox2;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:720:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  720 |         static complex  coefs[24], d1, d2, dy, dJ, dz;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:86:11: note: previous declaration is here
+   86 |         complex* coefs, ** coefs_mp;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:800:42: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  800 | double VBMicrolensing::BinaryMag0(double a1, double q1, double y1v, double y2v) {
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:808:45: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  808 | double VBMicrolensing::BinaryMagSafe(double s, double q, double y1v, double y2v, double RS, _sols_for_skiplist_curve** images) {
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:808:55: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  808 | double VBMicrolensing::BinaryMagSafe(double s, double q, double y1v, double y2v, double RS, _sols_for_skiplist_curve** images) {
+      |                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:882:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  882 | double VBMicrolensing::BinaryMag(double a1, double q1, double y1v, double y2v, double RSv, double Tol, _sols_for_skiplist_curve** Images) {
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:882:99: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  882 | double VBMicrolensing::BinaryMag(double a1, double q1, double y1v, double y2v, double RSv, double Tol, _sols_for_skiplist_curve** Images) {
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:9: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:883:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  883 |         static complex a, q, m1, m2, y0, y, yc, z, zc;
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:883:20: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  883 |         static complex a, q, m1, m2, y0, y, yc, z, zc;
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:883:35: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  883 |         static complex a, q, m1, m2, y0, y, yc, z, zc;
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:115: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:883:38: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  883 |         static complex a, q, m1, m2, y0, y, yc, z, zc;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:118: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:884:16: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  884 |         static double av = -1.0, qv = -1.0;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:167:19: note: previous declaration is here
+  167 |         double y_1, y_2, av, therr, astrox1, astrox2;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:885:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+  885 |         static complex coefs[24], d1, d2, dy, dJ, dz;
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:86:11: note: previous declaration is here
+   86 |         complex* coefs, ** coefs_mp;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:889:26: warning: unused variable 'maxerr' [-Wunused-variable]
+  889 |         static double errimage, maxerr, currerr, Magold;
+      |                                 ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:889:43: warning: variable 'Magold' set but not used [-Wunused-but-set-variable]
+  889 |         static double errimage, maxerr, currerr, Magold;
+      |                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1163:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1163 | double VBMicrolensing::BinaryMag(double a1, double q1, double y1v, double y2v, double RSv, double Tol) {
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1163:99: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1163 | double VBMicrolensing::BinaryMag(double a1, double q1, double y1v, double y2v, double RSv, double Tol) {
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:9: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1171:42: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1171 | double VBMicrolensing::BinaryMag2(double s, double q, double y1v, double y2v, double rho) {
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1171:52: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1171 | double VBMicrolensing::BinaryMag2(double s, double q, double y1v, double y2v, double rho) {
+      |                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1171:86: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1171 | double VBMicrolensing::BinaryMag2(double s, double q, double y1v, double y2v, double rho) {
+      |                                                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1172:21: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1172 |         static double Mag, rho2, y2a;//, sms , dy1, dy2;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1173:13: warning: variable 'c' set but not used [-Wunused-but-set-variable]
+ 1173 |         static int c;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1209:45: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1209 | double VBMicrolensing::BinaryMagDark(double a, double q, double y1, double y2, double RSv, double Tolnew) {
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1209:55: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1209 | double VBMicrolensing::BinaryMagDark(double a, double q, double y1, double y2, double RSv, double Tolnew) {
+      |                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1389:48: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1389 | void VBMicrolensing::BinaryMagMultiDark(double a, double q, double y1, double y2, double RSv, double* a1_list, int nfil, double* mag_list, double Tol) {
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1389:58: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1389 | void VBMicrolensing::BinaryMagMultiDark(double a, double q, double y1, double y2, double RSv, double* a1_list, int nfil, double* mag_list, double Tol) {
+      |                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1389:147: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1389 | void VBMicrolensing::BinaryMagMultiDark(double a, double q, double y1, double y2, double RSv, double* a1_list, int nfil, double* mag_list, double Tol) {
+      |                                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:9: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1392:23: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1392 |         double Mag, r2, cr2, scr2, a1;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:105:9: note: previous declaration is here
+  105 |         double scr2, sscr2;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1392:29: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1392 |         double Mag, r2, cr2, scr2, a1;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1466:56: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1466 | _curve* VBMicrolensing::NewImages(complex yi, complex* coefs, _theta* theta) {
+      |                                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:86:11: note: previous declaration is here
+   86 |         complex* coefs, ** coefs_mp;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:115: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:21: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:118: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:32: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:85:20: note: previous declaration is here
+   85 |         complex* zaltc, * J1, * J1c, ** za, ** za2;
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:36: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:85:26: note: previous declaration is here
+   85 |         complex* zaltc, * J1, * J1c, ** za, ** za2;
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:66: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:85:41: note: previous declaration is here
+   85 |         complex* zaltc, * J1, * J1c, ** za, ** za2;
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1467:76: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1467 |         static complex  y, yc, z, zc, J1, J1c, dy, dz, dJ, J2, J3, dza, za2, zb2, zaltc, Jalt, Jaltc, JJalt2;
+      |                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:85:11: note: previous declaration is here
+   85 |         complex* zaltc, * J1, * J1c, ** za, ** za2;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1468:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1468 |         static complex zr[5] = { 0.,0.,0.,0.,0. };
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:11: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1469:48: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1469 |         static double dlmin = 1.0e-4, dlmax = 1.0e-3, good[5], dJ2, ob2, cq;
+      |                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:10: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1471:16: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1471 |         static double av = 0.0, m1v = 0.0, disim, disisso;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:167:19: note: previous declaration is here
+  167 |         double y_1, y_2, av, therr, astrox1, astrox2;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1470:37: warning: variable 'bad' set but not used [-Wunused-but-set-variable]
+ 1470 |         static int worst1, worst2, worst3, bad, f1, checkJac;
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1471:16: warning: unused variable 'av' [-Wunused-variable]
+ 1471 |         static double av = 0.0, m1v = 0.0, disim, disisso;
+      |                       ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1471:26: warning: unused variable 'm1v' [-Wunused-variable]
+ 1471 |         static double av = 0.0, m1v = 0.0, disim, disisso;
+      |                                 ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1471:37: warning: variable 'disim' set but not used [-Wunused-but-set-variable]
+ 1471 |         static double av = 0.0, m1v = 0.0, disim, disisso;
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1471:44: warning: unused variable 'disisso' [-Wunused-variable]
+ 1471 |         static double av = 0.0, m1v = 0.0, disim, disisso;
+      |                                                   ^~~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1710:16: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1710 |         static double A[5][5];
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:109:11: note: previous declaration is here
+  109 |         double** A;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1711:26: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1711 |         static _skiplist_curve* cprec[5];
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:108:20: note: previous declaration is here
+  108 |         _skiplist_curve** cprec, ** cpres, ** cfoll;
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1712:26: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1712 |         static _skiplist_curve* cpres[5];
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:108:30: note: previous declaration is here
+  108 |         _skiplist_curve** cprec, ** cpres, ** cfoll;
+      |                                     ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1713:26: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 1713 |         static _skiplist_curve* cfoll[5];
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:108:40: note: previous declaration is here
+  108 |         _skiplist_curve** cprec, ** cpres, ** cfoll;
+      |                                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2400:10: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2400 |         double* q = (double*)malloc(sizeof(double) * (nn));
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2401:11: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2401 |         complex* s = (complex*)malloc(sizeof(complex) * (nn));
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2416:54: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2416 | void VBMicrolensing::SetLensGeometry(int nn, double* q, complex* s) {
+      |                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2416:66: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2416 | void VBMicrolensing::SetLensGeometry(int nn, double* q, complex* s) {
+      |                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2435:59: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2435 | void VBMicrolensing::SetLensGeometry_spnp(int nn, double* q, complex* s) {
+      |                                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2435:71: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2435 | void VBMicrolensing::SetLensGeometry_spnp(int nn, double* q, complex* s) {
+      |                                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2479:11: warning: declaration shadows a local variable [-Wshadow]
+ 2479 |         for (int i = 0; i < n; i++) {
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2439:13: note: previous declaration is here
+ 2439 |         static int i, j;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2483:11: warning: declaration shadows a local variable [-Wshadow]
+ 2483 |         for (int i = 0; i < n; i++) {
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2439:13: note: previous declaration is here
+ 2439 |         static int i, j;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2485:12: warning: declaration shadows a local variable [-Wshadow]
+ 2485 |                 for (int j = 0; j < n; j++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2439:16: note: previous declaration is here
+ 2439 |         static int i, j;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2499:64: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2499 | void VBMicrolensing::SetLensGeometry_multipoly(int nn, double* q, complex* s) {
+      |                                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2499:76: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2499 | void VBMicrolensing::SetLensGeometry_multipoly(int nn, double* q, complex* s) {
+      |                                                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2563:11: warning: declaration shadows a local variable [-Wshadow]
+ 2563 |         for (int i = 0; i < n; i++) {
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2500:16: note: previous declaration is here
+ 2500 |         static int j, i, x, k, p, dg;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2570:11: warning: declaration shadows a local variable [-Wshadow]
+ 2570 |         for (int k = 0; k < n; k++) {
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2500:22: note: previous declaration is here
+ 2500 |         static int j, i, x, k, p, dg;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2571:12: warning: declaration shadows a local variable [-Wshadow]
+ 2571 |                 for (int i = 0; i < n; i++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2500:16: note: previous declaration is here
+ 2500 |         static int j, i, x, k, p, dg;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2575:12: warning: declaration shadows a local variable [-Wshadow]
+ 2575 |                 for (int i = 0; i < n; i++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2500:16: note: previous declaration is here
+ 2500 |         static int j, i, x, k, p, dg;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2577:13: warning: declaration shadows a local variable [-Wshadow]
+ 2577 |                         for (int j = 0; j < n; j++) {
+      |                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2500:13: note: previous declaration is here
+ 2500 |         static int j, i, x, k, p, dg;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2674:76: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2674 | double VBMicrolensing::MultiMag(double y1s, double y2s, double RSv, double Tol, _sols_for_skiplist_curve** Images) {
+      |                                                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:9: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2781:4: warning: declaration shadows a local variable [-Wshadow]
+ 2781 |                         EXECUTE_METHOD(SelectedMethod, stheta)
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2605:22: note: expanded from macro 'EXECUTE_METHOD'
+ 2605 |             for (int i = 0; i < n; i++) {                  \
+      |                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2776:12: note: previous declaration is here
+ 2776 |                 for (int i = 0; i < 3; i++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2676:52: warning: unused variable 'thoff2' [-Wunused-variable]
+ 2676 |         static double Mag = -1.0, th, thoff = 0.01020304, thoff2 = 0.7956012033974483; //0.01020304
+      |                                                           ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2677:26: warning: unused variable 'maxerr' [-Wunused-variable]
+ 2677 |         static double errimage, maxerr, currerr, Magold, rhorad2, th2;
+      |                                 ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2677:43: warning: variable 'Magold' set but not used [-Wunused-but-set-variable]
+ 2677 |         static double errimage, maxerr, currerr, Magold, rhorad2, th2;
+      |                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2677:51: warning: unused variable 'rhorad2' [-Wunused-variable]
+ 2677 |         static double errimage, maxerr, currerr, Magold, rhorad2, th2;
+      |                                                          ^~~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2677:60: warning: unused variable 'th2' [-Wunused-variable]
+ 2677 |         static double errimage, maxerr, currerr, Magold, rhorad2, th2;
+      |                                                                   ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2678:35: warning: unused variable 'isquare' [-Wunused-variable]
+ 2678 |         static int NPSmax, flag, NPSold, isquare, flagfinal;
+      |                                          ^~~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2678:44: warning: unused variable 'flagfinal' [-Wunused-variable]
+ 2678 |         static int NPSmax, flag, NPSold, isquare, flagfinal;
+      |                                                   ^~~~~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2680:37: warning: unused variable 'jtheta' [-Wunused-variable]
+ 2680 |         static _theta* stheta, * itheta, * jtheta;
+      |                                            ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2684:13: warning: unused variable 'lsquares' [-Wunused-variable]
+ 2684 |         static int lsquares[4];
+      |                    ^~~~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:2938:76: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 2938 | double VBMicrolensing::MultiMag(double y1s, double y2s, double RSv, double Tol) {
+      |                                                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:9: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3199:65: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3199 | double VBMicrolensing::MultiMag2(double y1s, double y2s, double rho) {
+      |                                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3200:21: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3200 |         static double Mag, rho2, y2a, y1v, y2v;//, sms , dy1, dy2;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3200:27: warning: unused variable 'y2a' [-Wunused-variable]
+ 3200 |         static double Mag, rho2, y2a, y1v, y2v;//, sms , dy1, dy2;
+      |                                  ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3200:32: warning: unused variable 'y1v' [-Wunused-variable]
+ 3200 |         static double Mag, rho2, y2a, y1v, y2v;//, sms , dy1, dy2;
+      |                                       ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3201:13: warning: variable 'c' set but not used [-Wunused-but-set-variable]
+ 3201 |         static int c;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3381:9: warning: explicitly assigning value of variable of type 'double' to itself [-Wself-assign]
+ 3381 |                                 fad = fad;
+      |                                 ~~~ ^ ~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3339:54: warning: unused variable 'epsbo' [-Wunused-variable]
+ 3339 |         static double Lnew, Lold, fad, Jac, Jacold, prefac, epsbo;
+      |                                                             ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3566:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3566 |         static double ob2, dJ2, cq, Jac, imul, phi;
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3690:16: warning: unused variable 'mrt' [-Wunused-variable]
+ 3690 |         static double mrt;
+      |                       ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3728:24: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3728 |         static complex z, zc, yc, LL, zo, delta, lambda;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:118: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3730:13: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3730 |         static int iter, iter2, success;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3730:19: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3730 |         static int iter, iter2, success;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:60: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3729:40: warning: variable 'Jold' set but not used [-Wunused-but-set-variable]
+ 3729 |         static double dlmax = 1.0e-12, LLold, Jold, deltafac;
+      |                                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3771:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3771 |         static complex  yc, z, zc, zo, delta, dy, dz, J2, J3, Jalt, Jaltc, JJalt2, LL, J1c2, dzita;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:118: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:13: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:47: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:60: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:66: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:60: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3772:63: warning: unused variable 'Jold' [-Wunused-variable]
+ 3772 |         static double dlmax = 1.0e-12, dzmax = 1.e-10, dJ2, ob2, cq, Jold, LLold;
+      |                                                                      ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3772:69: warning: unused variable 'LLold' [-Wunused-variable]
+ 3772 |         static double dlmax = 1.0e-12, dzmax = 1.e-10, dJ2, ob2, cq, Jold, LLold;
+      |                                                                            ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:35: warning: variable 'bad' set but not used [-Wunused-but-set-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:40: warning: unused variable 'isso' [-Wunused-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                               ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:46: warning: unused variable 'ncrit' [-Wunused-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                     ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:53: warning: unused variable 'igood' [-Wunused-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                            ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:60: warning: unused variable 'iter' [-Wunused-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                   ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3773:66: warning: unused variable 'iter2' [-Wunused-variable]
+ 3773 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                         ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3774:16: warning: unused variable 'mi' [-Wunused-variable]
+ 3774 |         static double mi, tst, isgood;
+      |                       ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3774:20: warning: unused variable 'tst' [-Wunused-variable]
+ 3774 |         static double mi, tst, isgood;
+      |                           ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:17: warning: unused variable 'scan' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                        ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:25: warning: unused variable 'prin' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:33: warning: unused variable 'fifth' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                        ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:42: warning: unused variable 'left' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                 ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:50: warning: unused variable 'right' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                         ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3776:59: warning: unused variable 'center' [-Wunused-variable]
+ 3776 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                                  ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3869:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3869 |         static complex  yc, z, zc, zo, delta, dy, dz, J2, J3, Jalt, Jaltc, JJalt2, LL, J1c2, dzita;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:118: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:13: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:47: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:60: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:66: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:60: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3870:63: warning: unused variable 'Jold' [-Wunused-variable]
+ 3870 |         static double dlmax = 1.0e-12, dzmax = 1.e-10, dJ2, ob2, cq, Jold, LLold;
+      |                                                                      ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3870:69: warning: unused variable 'LLold' [-Wunused-variable]
+ 3870 |         static double dlmax = 1.0e-12, dzmax = 1.e-10, dJ2, ob2, cq, Jold, LLold;
+      |                                                                            ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:35: warning: variable 'bad' set but not used [-Wunused-but-set-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:40: warning: unused variable 'isso' [-Wunused-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                               ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:46: warning: unused variable 'ncrit' [-Wunused-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                     ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:53: warning: unused variable 'igood' [-Wunused-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                            ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:60: warning: unused variable 'iter' [-Wunused-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                   ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3871:66: warning: unused variable 'iter2' [-Wunused-variable]
+ 3871 |         static int ngood, nplus, nminus, bad, isso, ncrit, igood, iter, iter2;
+      |                                                                         ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3872:16: warning: unused variable 'mi' [-Wunused-variable]
+ 3872 |         static double mi, tst, isgood;
+      |                       ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3872:20: warning: unused variable 'tst' [-Wunused-variable]
+ 3872 |         static double mi, tst, isgood;
+      |                           ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:17: warning: unused variable 'scan' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                        ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:25: warning: unused variable 'prin' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:33: warning: unused variable 'fifth' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                        ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:42: warning: unused variable 'left' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                 ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:50: warning: unused variable 'right' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                         ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3874:59: warning: unused variable 'center' [-Wunused-variable]
+ 3874 |         static _point* scan, * prin, * fifth, * left, * right, * center;
+      |                                                                  ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:3960:34: warning: unused variable 'scan3' [-Wunused-variable]
+ 3960 |         static _point* scan, * scan2, * scan3, * isso[2];
+      |                                         ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4937:20: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4937 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]);
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4937:36: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4937 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]);
+      |                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4972:20: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4972 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4972:36: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4972 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982:12: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4982 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:23: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4982 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982:23: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 4982 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982:34: warning: variable 'Sinc' set but not used [-Wunused-but-set-variable]
+ 4982 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5039:20: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5039 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11], szs = pr[12], ar = pr[13] + 1.e-8;
+      |                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5039:36: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5039 |         double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11], szs = pr[12], ar = pr[13] + 1.e-8;
+      |                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5050:28: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5050 |         double wt2, smix, sqsmix, e, h, snu, co1EE0, co2EE0, cosE, sinE, co1tperi, tperi, EE0, M, a, St, psi, dM, conu, n;
+      |                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:9: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5050:92: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5050 |         double wt2, smix, sqsmix, e, h, snu, co1EE0, co2EE0, cosE, sinE, co1tperi, tperi, EE0, M, a, St, psi, dM, conu, n;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5050:114: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5050 |         double wt2, smix, sqsmix, e, h, snu, co1EE0, co2EE0, cosE, sinE, co1tperi, tperi, EE0, M, a, St, psi, dM, conu, n;
+      |                                                                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:82:12: note: previous declaration is here
+   82 |         int nim0, n, n2, nnm1, nroots, nrootsmp, * nrootsmp_mp;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5048:9: warning: unused variable 'salpha' [-Wunused-variable]
+ 5048 |         double salpha = sin(pr[3]), calpha = cos(pr[3]);
+      |                ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5048:30: warning: unused variable 'calpha' [-Wunused-variable]
+ 5048 |         double salpha = sin(pr[3]), calpha = cos(pr[3]);
+      |                                     ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5049:29: warning: variable 'w23' set but not used [-Wunused-but-set-variable]
+ 5049 |         double w22, w11, w33, w12, w23, szs2, ar2, EE, dE;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5049:34: warning: variable 'szs2' set but not used [-Wunused-but-set-variable]
+ 5049 |         double w22, w11, w33, w12, w23, szs2, ar2, EE, dE;
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5049:40: warning: variable 'ar2' set but not used [-Wunused-but-set-variable]
+ 5049 |         double w22, w11, w33, w12, w23, szs2, ar2, EE, dE;
+      |                                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5143:135: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5143 |         double t01 = pr[4], t02 = pr[5] + w[0] * (pr[5] - pr[4]) / tE_inv, u1 = pr[2], u2 = pr[3] + w[1] * (pr[4] - pr[5]), FR = exp(pr[1]), rho2, tn, u, utot, xt, xu;
+      |                                                                                                                                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5144:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5144 |         double s[3] = { (t01 - t02) * tE_inv,u2 - u1,0 };
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5145:15: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5145 |         double L[3], Om[3], Y[3], norm, normOm, s3D, wtot, qs;
+      |                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:29: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5269:21: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5269 |         double tn, u, FRl, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5269:37: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5269 |         double tn, u, FRl, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5273:142: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5273 |         double t01 = pr[6], t02 = pr[13] + ws[0] * (pr[13] - pr[6]) / tE_inv, u1 = pr[2], u2 = pr[12] + ws[1] * (pr[6] - pr[13]), FR = exp(pr[14]), rho2, xt, xu;
+      |                                                                                                                                                     ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5275:15: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5275 |         double L[3], Om[3], Y[3], norm, normOm, s3D, wstot, qs,phis0;
+      |                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:29: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5288:12: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5288 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:23: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5288:18: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5288 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5288:23: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5288 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5288:34: warning: variable 'Sinc' set but not used [-Wunused-but-set-variable]
+ 5288 |         double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true;
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:31: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:67: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:79: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:91: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:61: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:106: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                                                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:67: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5445:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5445 |         double q[3] = { 1, exp(pr[1]),exp(pr[8]) };
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5448:10: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5448 |         complex s[3];
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5450:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5450 |         double Et[2];
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:100:25: note: previous declaration is here
+  100 |         double Et0[2], vt0[2], Et[2], Ehel[2], lighttravel, lighttravel0;
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:53: warning: unused variable 'di' [-Wunused-variable]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                            ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5444:57: warning: unused variable 'mindi' [-Wunused-variable]
+ 5444 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+      |                                                                ^~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5511:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5511 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5511:26: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5511 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u;
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5511:38: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5511 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5531:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5531 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u, rho = exp(pr[3]);
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5531:26: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5531 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u, rho = exp(pr[3]);
+      |                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5531:38: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5531 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u, rho = exp(pr[3]);
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5531:67: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5531 |         double u0 = exp(pr[0]), t0 = pr[2], tE_inv = exp(-pr[1]), tn, u, rho = exp(pr[3]);
+      |                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5551:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5551 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]);
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5551:25: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5551 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]);
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5551:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5551 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]);
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5551:63: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5551 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]);
+      |                                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:25: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:63: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:85: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                                                                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5573:89: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5573 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+      |                                                                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5607:59: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5607 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR=exp(pr[1]), tn, u;
+      |                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:59: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:105: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:109: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:61: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:123: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:67: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:137: warning: unused variable 'w1' [-Wunused-variable]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                                                ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:149: warning: unused variable 'w2' [-Wunused-variable]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                                                            ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5631:161: warning: unused variable 'w3' [-Wunused-variable]
+ 5631 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+      |                                                                                                                                                                        ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5659:59: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5659 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5659:105: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5659 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                                                                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5659:109: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5659 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                                                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:61: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5659:123: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5659 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                                                                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:67: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5659:137: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5659 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+      |                                                                                                                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5661:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5661 |         double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5661:23: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5661 |         double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:23: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5661:29: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5661 |         double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5661:34: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5661 |         double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
+      |                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5661:45: warning: variable 'Sinc' set but not used [-Wunused-but-set-variable]
+ 5661 |         double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
+      |                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5730:59: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5730 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), rho = exp(pr[6]), rho2, tn, u;
+      |                                                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5730:98: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5730 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), rho = exp(pr[6]), rho2, tn, u;
+      |                                                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5730:116: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5730 |         double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), rho = exp(pr[6]), rho2, tn, u;
+      |                                                                                                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5757:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5757 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u0;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5757:25: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5757 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u0;
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5757:41: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5757 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u0;
+      |                                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5757:63: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5757 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u0;
+      |                                                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5757:85: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5757 |         double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u0;
+      |                                                                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5758:92: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5758 |         double salpha = sin(pr[3]), calpha = cos(pr[3]), xi1 = pr[7], xi2 = pr[8], omega = pr[9], inc = pr[10], phi = pr[11], qs = exp(pr[12]);
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5758:106: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5758 |         double salpha = sin(pr[3]), calpha = cos(pr[3]), xi1 = pr[7], xi2 = pr[8], omega = pr[9], inc = pr[10], phi = pr[11], qs = exp(pr[12]);
+      |                                                                                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5761:25: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5761 |         double Mag, Mag2, u02, rho2, tn2, y1s2, y2s2, qs4;
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5802:10: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5802 |         double  t0 = pr[1], rho = exp(pr[3]), tn, tE_inv = exp(-pr[2]), u0;
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5802:22: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5802 |         double  t0 = pr[1], rho = exp(pr[3]), tn, tE_inv = exp(-pr[2]), u0;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5802:44: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5802 |         double  t0 = pr[1], rho = exp(pr[3]), tn, tE_inv = exp(-pr[2]), u0;
+      |                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5802:66: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5802 |         double  t0 = pr[1], rho = exp(pr[3]), tn, tE_inv = exp(-pr[2]), u0;
+      |                                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:38: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5803:51: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5803 |         double  xi1 = pr[4], xi2 = pr[5], omega = pr[6], inc = pr[7], phi = pr[8], qs = exp(pr[9]);
+      |                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5803:64: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5803 |         double  xi1 = pr[4], xi2 = pr[5], omega = pr[6], inc = pr[7], phi = pr[8], qs = exp(pr[9]);
+      |                                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:12: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5806:25: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5806 |         double Mag, Mag2, u02, rho2, tn2, qs4, u, u2;
+      |                                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:29: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5802:10: warning: unused variable 't0' [-Wunused-variable]
+ 5802 |         double  t0 = pr[1], rho = exp(pr[3]), tn, tE_inv = exp(-pr[2]), u0;
+      |                 ^~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5859:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5859 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5859:31: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5859 |         double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi;
+      |                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5860:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5860 |         double q[3] = { 1, exp(pr[1]),exp(pr[8]) };
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5861:10: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5861 |         complex s[3];
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5898:9: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5898 |         double rho = exp(pr[2]), tn, tE_inv = exp(-pr[1]), di, mindi;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:24: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                               ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5898:31: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5898 |         double rho = exp(pr[2]), tn, tE_inv = exp(-pr[1]), di, mindi;
+      |                                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:42: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5900:10: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5900 |         double* q = (double*)malloc(sizeof(double) * (nl));
+      |                 ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5901:11: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 5901 |         complex* s = (complex*)malloc(sizeof(complex) * (nl));
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:124: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5924:12: warning: declaration shadows a local variable [-Wshadow]
+ 5924 |                 for (int i = 0; i < n; i++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5919:11: note: previous declaration is here
+ 5919 |         for (int i = 0; i < np; i++) {
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6414:3: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 6414 |                 sprintf(filename, "%s%csatellite*.txt", sateltabledir, systemslash);
+      |                 ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6498:13: warning: unused variable 'tcur' [-Wunused-variable]
+ 6498 |                                         double tcur;
+      |                                                ^~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6562:55: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6562 | void VBMicrolensing::ComputeParallax(double t, double t0) {
+      |                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:50: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                                         ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6571:16: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6571 |         static double a, e, inc, L, om, M, EE, dE, dM;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6571:19: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6571 |         static double a, e, inc, L, om, M, EE, dE, dM;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:9: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6571:22: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6571 |         static double a, e, inc, L, om, M, EE, dE, dM;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:96:33: note: previous declaration is here
+   96 |         double e, phi, phip, phi0, Om, inc, u0, tE_inv, t0, alpha, pai1, pai2, PosAng, dPosAng, thetaE, d3, v3, GM, flagits;
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6574:6: warning: unused variable 'c' [-Wunused-variable]
+ 6574 |         int c = 0, ic;
+      |             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6884:14: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6884 |         complex ej, y, z;
+      |                     ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:115: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6885:6: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6885 |         int NPS = 200;
+      |             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:165:37: note: previous declaration is here
+  165 |         int minannuli, maxannuli, nannuli, NPS, NPcrit;
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6885:6: warning: unused variable 'NPS' [-Wunused-variable]
+ 6885 |         int NPS = 200;
+      |             ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6958:40: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6958 | _sols* VBMicrolensing::PlotCrit(double a1, double q1) {
+      |                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:159:22: note: previous declaration is here
+  159 |         double Tol, RelTol, a1, a2,corrquad, corrquad2, safedist;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6959:11: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6959 |         complex  a, q, ej, zr[4], x1, x2;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6959:14: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6959 |         complex  a, q, ej, zr[4], x1, x2;
+      |                     ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:81:21: note: previous declaration is here
+   81 |         double* dist_mp, * q;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6959:21: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6959 |         complex  a, q, ej, zr[4], x1, x2;
+      |                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:11: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6960:6: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6960 |         int NPS = 200;
+      |             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:165:37: note: previous declaration is here
+  165 |         int minannuli, maxannuli, nannuli, NPS, NPcrit;
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6978:12: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 6978 |                 complex  coefs[5] = { a * a / 16.0 * (4.0 - a * a * ej) * (1.0 + q),a * (q - 1.0),(q + 1.0) * (1.0 + a * a * ej / 2.0),0.0,-(1.0 + q) * ej };
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:86:11: note: previous declaration is here
+   86 |         complex* coefs, ** coefs_mp;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6960:6: warning: unused variable 'NPS' [-Wunused-variable]
+ 6960 |         int NPS = 200;
+      |             ^~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7047:94: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7047 | void VBMicrolensing::polyproduct(complex* __restrict p1, int n1, complex* __restrict p2, int n2, complex* __restrict pdest) {
+      |                                                                                              ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:82:15: note: previous declaration is here
+   82 |         int nim0, n, n2, nnm1, nroots, nrootsmp, * nrootsmp_mp;
+      |                      ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7679:19: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7679 |         static int i, j, n, iter;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:82:12: note: previous declaration is here
+   82 |         int nim0, n, n2, nnm1, nroots, nrootsmp, * nrootsmp_mp;
+      |                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7679:22: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7679 |         static int i, j, n, iter;
+      |                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7703:12: warning: declaration shadows a local variable [-Wshadow]
+ 7703 |                 for (int i = 0; i < n - 1; i++) {
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7679:13: note: previous declaration is here
+ 7679 |         static int i, j, n, iter;
+      |                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7752:49: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7752 |         static int l, j, i, k, ind, degreenew, croots, m;
+      |                                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:93:37: note: previous declaration is here
+   93 |         double* good, * Jacs, rho, rho2, * m;
+      |                                            ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7835:14: warning: declaration shadows a local variable [-Wshadow]
+ 7835 |                                 for (int i = ind; i < ind + nrootsmp_mp[ll]; i++) {
+      |                                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7752:19: note: previous declaration is here
+ 7752 |         static int l, j, i, k, ind, degreenew, croots, m;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7845:13: warning: declaration shadows a local variable [-Wshadow]
+ 7845 |                         for (int i = 0; i < n - 1; i++) {
+      |                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7752:19: note: previous declaration is here
+ 7752 |         static int l, j, i, k, ind, degreenew, croots, m;
+      |                          ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7849:13: warning: declaration shadows a local variable [-Wshadow]
+ 7849 |                         for (int m = degree; m > degreenew; m--) {
+      |                                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7752:49: note: previous declaration is here
+ 7752 |         static int l, j, i, k, ind, degreenew, croots, m;
+      |                                                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7752:41: warning: unused variable 'croots' [-Wunused-variable]
+ 7752 |         static int l, j, i, k, ind, degreenew, croots, m;
+      |                                                ^~~~~~
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7904:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7904 |         static complex a, b, c, b2, delta;
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:83:92: note: previous declaration is here
+   83 |         complex* zr, * zcr, ** pmza, ** pyaza, ** ppmy, * pza, * pza2, ** pmza2, * pdum, * ppy, * a, * s_offset, * pert, y, yc, * s;
+      |                                                                                                   ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7940:17: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7940 |         static complex A, B, a_1, E12, delta, A2;
+      |                        ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:109:11: note: previous declaration is here
+  109 |         double** A;
+      |                  ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:7977:84: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 7977 | void VBMicrolensing::cmplx_laguerre(complex* poly, int degree, complex* root, int& iter, bool& success) {
+      |                                                                                    ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:8014:16: warning: unused variable 'j' [-Wunused-variable]
+ 8014 |         static int i, j, k;
+      |                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:8126:87: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 8126 | void VBMicrolensing::cmplx_newton_spec(complex* poly, int degree, complex* root, int& iter, bool& success) {
+      |                                                                                       ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:8264:91: warning: declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+ 8264 | void VBMicrolensing::cmplx_laguerre2newton(complex* poly, int degree, complex* root, int& iter, bool& success, int starting_mode) {
+      |                                                                                           ^
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.h:91:54: note: previous declaration is here
+   91 |         int lencentralimages, lennewseeds, ngoodold, ngood, iter, iter2;
+      |                                                             ^
+274 warnings generated.

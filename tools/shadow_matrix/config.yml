@@ -1,0 +1,27 @@
+# Matrix entries. Edit to match the compilers/flags available on your CI/machines.
+# Each entry must have: name, cc, cxx. Optional: cflags, cxxflags.
+
+matrix:
+  - name: clang-O0
+    cc: /usr/bin/clang
+    cxx: /usr/bin/clang++
+    cflags: -O0
+    cxxflags: -O0
+
+  - name: clang-O3
+    cc: /usr/bin/clang
+    cxx: /usr/bin/clang++
+    cflags: -O3
+    cxxflags: -O3
+
+  - name: gcc-O2
+    cc: /opt/homebrew/bin/gcc-15
+    cxx: /opt/homebrew/bin/g++-15
+    cflags: -O2
+    cxxflags: -O2
+
+  - name: gcc-O3
+    cc: /opt/homebrew/bin/gcc-15
+    cxx: /opt/homebrew/bin/g++-15
+    cflags: -O3
+    cxxflags: -O3

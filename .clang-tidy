@@ -1,0 +1,2 @@
+Checks: 'clang-diagnostic-shadow'
+WarningsAsErrors: 'clang-diagnostic-shadow'

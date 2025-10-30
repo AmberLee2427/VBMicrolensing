@@ -1,0 +1,18 @@
+event_0_603_3135 ,,,RTModel v3.1 investigation,,,,VBMicrolensing investigation,RTModel v3.1 investigation,,,,,
+Machine,Compiler, LevMar fit time limit,Starting from Static:,,Starting from No Static: ,,Time to calculate magnification for best Mac LX model set of parameters with VBM (s),Starting from Static: ,,,Starting from No Static: ,,
+,,,Found the planetary model,Did not find the planetary model,Found the planetary model,Did not find the planetary model,,LS timed out fits,LX timed out fits,LO timed out fits,LS timed out fits,LX timed out fits,LO timed out fits
+MAC M3 umbreon,Clang 18.1.8,default,X,,X,,0.008744001388549805,6,0,0,N/A,0,0
+CBPF COSMO milliways,GCC 13.3.0,default,,X,,X,0.01791691780090332,10,0,0,N/A,no run*,6
+NASA NCCS Cascade Lake,GCC 14.2.0,default,,X,,X,0.021016359329223633,14,2,0,N/A,no run*,18
+NASA NCCS Cascade Lake,GCC 14.2.0,default x4,,X,,X,0.021016359329223633,2,0,0,N/A,no run*,0
+NASA NCCS Cascade Lake,GCC 14.2.0,default x10,,X,,X,0.021016359329223633,0,0,0,N/A,no run*,0
+NASA NCCS Milan,GCC 14.2.0,default,,X,,X,0.028962135314941406,16,2,2,N/A,no run*,22
+Jon Windows i7-13700F,Microsoft Visual C++ (MSVC) compiler,default,,X,X,,0.013897,14,4,,N/A,34,
+MAC Intel ponyta,Clang 19.1.7,default,,X,,X,0.01794099808,28,8,0,N/A,56,0
+NASA SMCE AWS east1,,default,,X,"X (fit is not very good, but finds the planetary anomaly)",,,,,,,,
+NASA SMCE AWS east2,11.4.0,default,,X,"X (fit is not very good, but finds the planetary anomaly)",,0.09672212601,,,,,,
+NASA NCCS Cascade Lake,Clang 18.1.8,default,,X,,"X (One LO fit get closer to an incorrect planetary solution, and RTModel still prefers BO.)",0.02029061317,12,2,2,N/A,no run*,6
+NASA NCCS Cascade Lake,Clang 18.1.8,default x4,,X,,"X (One LO fit get closer to an incorrect planetary solution, and RTModel still prefers BO.)",0.02029061317,2,0,0,N/A,no run*,0
+NASA NCCS Cascade Lake,Clang 18.1.8,default x10,,X,,"X (One LO fit get closer to an incorrect planetary solution, and RTModel still prefers BO.)",0.02029061317,0,0,0,N/A,no run*,0
+NASA NCCS Milan,Clang 18.1.8,default,,X,,X,0.02889108658,22,4,2,N/A,no run*,14
+,,,,,,,,* (for some reason RTModel does not run LX on the supercomputers when setting nostatic=True),,,,,

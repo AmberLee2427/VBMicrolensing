@@ -1,0 +1,14 @@
+[ 33%] Building CXX object CMakeFiles/VBMicrolensing.dir/VBMicrolensing/lib/python_bindings.cpp.o
+[ 66%] Building CXX object CMakeFiles/VBMicrolensing.dir/VBMicrolensing/lib/VBMicrolensingLibrary.cpp.o
+/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:6414:3: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 6414 |                 sprintf(filename, "%s%csatellite*.txt", sateltabledir, systemslash);
+      |                 ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+1 warning generated.
+[100%] Linking CXX shared module VBMicrolensing.so
+[100%] Built target VBMicrolensing
