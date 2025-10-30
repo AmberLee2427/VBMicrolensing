@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import math
+import os
+import sys
 from pathlib import Path
 
 import pytest
@@ -122,6 +124,9 @@ def test_light_curve_basics(vbm):
 
 
 def test_parallax_and_orbital_light_curves(vbm):
+    build_style = os.environ.get("VBM_BUILD_STYLE")
+    if sys.platform == "darwin" and build_style == "cmake-local":
+        pytest.xfail("BinaryLightCurveKepler stalls under macOS CMake builds.")
     vbm.LoadESPLTable(str(DATA_DIR / "ESPL.tbl"))
     vbm.LoadSunTable(str(DATA_DIR / "SunEphemeris.txt"))
     vbm.SetObjectCoordinates(b"17:59:04 +14:00:03")

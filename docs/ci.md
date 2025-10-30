@@ -22,6 +22,11 @@ Every job also uploads its full pytest output and exit code as an artifact named
 `pytest-log-<os>-py<version>-<install-mode>`, so we can diff behaviours between
 runs or download logs from failing builds.
 
+The workflow exports `VBM_BUILD_STYLE=<install-mode>` before running pytest.
+`tests/test_vbmicrolensing.py::test_parallax_and_orbital_light_curves` relies on
+this value to mark the macOS `cmake-local` build as an expected failure while
+`BinaryLightCurveKepler` remains stuck in the CMake artefact.
+
 ## Reproducing the CMake-local job locally
 
 ```bash

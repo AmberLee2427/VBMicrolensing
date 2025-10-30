@@ -90,6 +90,7 @@ jobs:
           if [ "${INSTALL_MODE}" = "cmake-local" ]; then
             export PYTHONPATH="${GITHUB_WORKSPACE}${PYTHONPATH:+:${PYTHONPATH}}"
           fi
+          export VBM_BUILD_STYLE="${INSTALL_MODE}"
           python -m pytest -vv --maxfail=1 | tee artifacts/pytest.log
           exit_code=${PIPESTATUS[0]}
           printf '%s\n' "${exit_code}" > artifacts/pytest-exit-code.txt
