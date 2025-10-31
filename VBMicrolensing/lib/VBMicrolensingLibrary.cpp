@@ -715,60 +715,60 @@ double VBMicrolensing::ESPLMagDark(double u, double RSv) {
 
 
 double VBMicrolensing::BinaryMag0(double a1_scratch, double q1_scratch, double y1v, double y2v, _sols_for_skiplist_curve** Images) {
-	static complex a, q, m1, m2, y;
+	static complex a_scratch, q_scratch, m1_scratch, m2_scratch, y_scratch;
 	static double av = -1.0, qv = -1.0;
-	static complex  coefs[24], d1, d2, dy, dJ, dz;
-	static double Mag, Ai;
+	static complex coefs_scratch[24], d1_scratch, d2_scratch, dy_scratch, dJ_scratch, dz_scratch;
+	static double Mag_scratch, Ai_scratch;
 
 	static _theta* stheta;
 	static _curve* Prov;
 	static _skiplist_curve* Prov2;
 	static _point* scan1, * scan2;
 
-	Mag = Ai = -1.0;
+	Mag_scratch = Ai_scratch = -1.0;
 	stheta = new _theta(-1.);
 	if ((a1_scratch != av) || (q1_scratch != qv)) {
 		av = a1_scratch;
 		qv = q1_scratch;
 		if (q1_scratch < 1) {
-			a = complex(-a1_scratch, 0);
-			q = complex(q1_scratch, 0);
+			a_scratch = complex(-a1_scratch, 0);
+			q_scratch = complex(q1_scratch, 0);
 		}
 		else {
-			a = complex(a1_scratch, 0);
-			q = complex(1 / q1_scratch, 0);
+			a_scratch = complex(a1_scratch, 0);
+			q_scratch = complex(1 / q1_scratch, 0);
 		}
-		m1 = 1.0 / (1.0 + q);
-		m2 = q * m1;
+		m1_scratch = 1.0 / (1.0 + q_scratch);
+		m2_scratch = q_scratch * m1_scratch;
 
-		coefs[20] = a;
-		coefs[21] = m1;
-		coefs[22] = m2;
-		coefs[6] = a * a;
-		coefs[7] = coefs[6] * a;
-		coefs[8] = m2 * m2;
-		coefs[9] = coefs[6] * coefs[8];
-		coefs[10] = a * m2;
-		coefs[11] = a * m1;
-		coefs[23] = 0;
+		coefs_scratch[20] = a_scratch;
+		coefs_scratch[21] = m1_scratch;
+		coefs_scratch[22] = m2_scratch;
+		coefs_scratch[6] = a_scratch * a_scratch;
+		coefs_scratch[7] = coefs_scratch[6] * a_scratch;
+		coefs_scratch[8] = m2_scratch * m2_scratch;
+		coefs_scratch[9] = coefs_scratch[6] * coefs_scratch[8];
+		coefs_scratch[10] = a_scratch * m2_scratch;
+		coefs_scratch[11] = a_scratch * m1_scratch;
+		coefs_scratch[23] = 0;
 
 	}
-	y = complex(y1v, y2v);
+	y_scratch = complex(y1v, y2v);
 	(*Images) = new _sols_for_skiplist_curve;
 	corrquad = corrquad2 = 0;
 	safedist = 10;
-	Prov = NewImages(y, coefs, stheta);
+	Prov = NewImages(y_scratch, coefs_scratch, stheta);
 	if (Prov->length == 0) {
 		delete Prov;
 		delete stheta;
 		return -1;
 	}
-	if (q.re < 0.01) {
-		safedist = y1v + (a.re - 1 / a.re) * coefs[21].re; // Note that a.re is negative 
+	if (q_scratch.re < 0.01) {
+		safedist = y1v + (a_scratch.re - 1 / a_scratch.re) * coefs_scratch[21].re; // Note that a.re is negative 
 		safedist *= safedist;
-		safedist += y2v * y2v - 4 * sqrt(q.re) / (a.re * a.re); // Caustic region of influence ~ sqrt(caustic size)
+		safedist += y2v * y2v - 4 * sqrt(q_scratch.re) / (a_scratch.re * a_scratch.re); // Caustic region of influence ~ sqrt(caustic size)
 	}
-	Mag = 0.;
+	Mag_scratch = 0.;
 	astrox1 = 0.;
 	astrox2 = 0.;
 	nim0 = 0;
@@ -776,11 +776,11 @@ double VBMicrolensing::BinaryMag0(double a1_scratch, double q1_scratch, double y
 		scan2 = scan1->next;
 		Prov2 = new _skiplist_curve(scan1, 0);						// create an object of class _curve with one member(_point class variable),
 		(*Images)->append(Prov2);
-		Ai = fabs(1 / scan1->dJ);
-		Mag += Ai;
+		Ai_scratch = fabs(1 / scan1->dJ);
+		Mag_scratch += Ai_scratch;
 		if (astrometry) {
-			astrox1 += scan1->x1 * Ai;
-			astrox2 += (scan1->x2) * Ai;
+			astrox1 += scan1->x1 * Ai_scratch;
+			astrox2 += (scan1->x2) * Ai_scratch;
 		}
 		nim0++;
 	}
@@ -788,12 +788,12 @@ double VBMicrolensing::BinaryMag0(double a1_scratch, double q1_scratch, double y
 	delete Prov;
 	delete stheta;
 	if (astrometry) {
-		astrox1 /= (Mag);
-		astrox1 -= coefs[11].re;
-		astrox2 /= (Mag);
+		astrox1 /= (Mag_scratch);
+		astrox1 -= coefs_scratch[11].re;
+		astrox2 /= (Mag_scratch);
 	}
 	NPS = 1;
-	return Mag;
+	return Mag_scratch;
 
 }
 
@@ -9416,4 +9416,3 @@ void _thetas::remove(_theta* stheta) {
 
 
 #pragma endregion
-
