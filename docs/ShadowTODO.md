@@ -35,15 +35,15 @@
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5806` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinaryAstroLightCurve
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4937` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4937` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinaryAstroLightCurveKepler
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5039` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5050` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5039` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5050` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinaryAstroLightCurveOrbital
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4972` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4972` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:4982` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinaryLightCurve
 - [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5551` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]

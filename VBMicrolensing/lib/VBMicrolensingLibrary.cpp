@@ -4934,7 +4934,7 @@ void VBMicrolensing::ESPLAstroLightCurve(double* pr, double* ts, double* mags, d
 }
 
 void VBMicrolensing::BinaryAstroLightCurve(double* pr, double* ts, double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* y1s, double* y2s, int np) {
-	double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]);
+	double tn, u, flux_ratio_scratch, s = exp(pr[0]), q = exp(pr[1]);
 	u0 = pr[2];
 	t0 = pr[6];
 	tE_inv = exp(-pr[5]);
@@ -4960,16 +4960,16 @@ void VBMicrolensing::BinaryAstroLightCurve(double* pr, double* ts, double* mags,
 			c1s[i] = astrox1;
 			c2s[i] = astrox2;
 			ComputeCentroids(pr, ts[i], &c1s[i], &c2s[i], &c1l[i], &c2l[i]);
-			FR = (turn_off_secondary_lens) ? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
-			c1l[i] += (-q + FR) * s * thetaE / (1 + q) * cos(PosAng) / (1 + FR); // Flux center of the two lenses from barycenter
-			c2l[i] += (-q + FR) * s * thetaE / (1 + q) * sin(PosAng) / (1 + FR);
+			flux_ratio_scratch = (turn_off_secondary_lens) ? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
+			c1l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * cos(PosAng) / (1 + flux_ratio_scratch); // Flux center of the two lenses from barycenter
+			c2l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * sin(PosAng) / (1 + flux_ratio_scratch);
 		}
 	}
 }
 
 
 void VBMicrolensing::BinaryAstroLightCurveOrbital(double* pr, double* ts, double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* y1s, double* y2s, double* seps, int np) {
-	double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
+	double tn, u, flux_ratio_scratch, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11];
 	u0 = pr[2];
 	t0 = pr[6];
 	tE_inv = exp(-pr[5]);
@@ -5027,16 +5027,16 @@ void VBMicrolensing::BinaryAstroLightCurveOrbital(double* pr, double* ts, double
 			c1s[i] = astrox1;
 			c2s[i] = astrox2;
 			ComputeCentroids(pr, ts[i], &c1s[i], &c2s[i], &c1l[i], &c2l[i]);
-			FR = (turn_off_secondary_lens) ? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
-			c1l[i] += (-q + FR) * s * thetaE / (1 + q) * cos(PosAng) / (1 + FR); // Flux center of the two lenses from barycenter
-			c2l[i] += (-q + FR) * s * thetaE / (1 + q) * sin(PosAng) / (1 + FR);
+			flux_ratio_scratch = (turn_off_secondary_lens) ? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
+			c1l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * cos(PosAng) / (1 + flux_ratio_scratch); // Flux center of the two lenses from barycenter
+			c2l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * sin(PosAng) / (1 + flux_ratio_scratch);
 		}
 	}
 }
 
 
 void VBMicrolensing::BinaryAstroLightCurveKepler(double* pr, double* ts, double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* y1s, double* y2s, double* seps, int np) {
-	double tn, u, FR, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11], szs = pr[12], ar = pr[13] + 1.e-8;
+	double tn, u, flux_ratio_scratch, s = exp(pr[0]), q = exp(pr[1]), w1 = pr[9], w2 = pr[10], w3 = pr[11], szs = pr[12], ar = pr[13] + 1.e-8;
 	u0 = pr[2];
 	t0 = pr[6];
 	tE_inv = exp(-pr[5]);
@@ -5128,9 +5128,9 @@ void VBMicrolensing::BinaryAstroLightCurveKepler(double* pr, double* ts, double*
 			c1s[i] = astrox1;
 			c2s[i] = astrox2;
 			ComputeCentroids(pr, ts[i], &c1s[i], &c2s[i], &c1l[i], &c2l[i]);
-			FR = (turn_off_secondary_lens)? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
-			c1l[i] += (-q + FR) * s * thetaE / (1 + q) * cos(PosAng) / (1 + FR); // Flux center of the two lenses from barycenter
-			c2l[i] += (-q + FR) * s * thetaE / (1 + q) * sin(PosAng) / (1 + FR);
+			flux_ratio_scratch = (turn_off_secondary_lens)? 0 : pow(q, lens_mass_luminosity_exponent); // Flux ratio between the two lenses
+			c1l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * cos(PosAng) / (1 + flux_ratio_scratch); // Flux center of the two lenses from barycenter
+			c2l[i] += (-q + flux_ratio_scratch) * s * thetaE / (1 + q) * sin(PosAng) / (1 + flux_ratio_scratch);
 		}
 
 	}
