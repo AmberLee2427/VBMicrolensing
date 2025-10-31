@@ -5627,14 +5627,14 @@ void VBMicrolensing::BinSourceLightCurve(double* pr, double* ts, double* mags, d
 
 
 void VBMicrolensing::BinSourceLightCurveParallax(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np) {
-	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
+	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv_scratch = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], w1 = pr[8], w2 = pr[9], w3 = pr[10];
 	t0old = 0;
 	parallaxextrapolation = 0;
 
 	for (int i = 0; i < np; i++) {
 		ComputeParallax(ts[i], t0);
 
-		tn = (ts[i] + lighttravel - t01) * tE_inv + pai1 * Et[0] + pai2 * Et[1];
+		tn = (ts[i] + lighttravel - t01) * tE_inv_scratch + pai1 * Et[0] + pai2 * Et[1];
 		u0 = u1 + pai1 * Et[1] - pai2 * Et[0];
 		u = tn * tn + u0 * u0;
 
@@ -5642,7 +5642,7 @@ void VBMicrolensing::BinSourceLightCurveParallax(double* pr, double* ts, double*
 		y2s[i] = -u0;
 		mags[i] = (u + 2) / sqrt(u * (u + 4));
 
-		tn = (ts[i] + lighttravel - t02) * tE_inv + pai1 * Et[0] + pai2 * Et[1];
+		tn = (ts[i] + lighttravel - t02) * tE_inv_scratch + pai1 * Et[0] + pai2 * Et[1];
 		u0 = u2 + pai1 * Et[1] - pai2 * Et[0];
 		u = tn * tn + u0 * u0;
 
