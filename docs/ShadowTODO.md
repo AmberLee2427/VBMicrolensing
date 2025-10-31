@@ -59,8 +59,8 @@
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:1163` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinaryMag0
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:717` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:718` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:717` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:718` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:719` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:720` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:800` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
