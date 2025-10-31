@@ -5726,17 +5726,17 @@ void VBMicrolensing::BinSourceLightCurveXallarap(double* pr, double* ts, double*
 }
 
 void VBMicrolensing::BinSourceExtLightCurve(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np) {
-	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), rho = exp(pr[6]), rho2, tn, u;
+	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv_scratch = exp(-pr[0]), FR = exp(pr[1]), rho = exp(pr[6]), rho2, tn, u;
 
 	for (int i = 0; i < np; i++) {
-		tn = (ts[i] - t01) * tE_inv;
+		tn = (ts[i] - t01) * tE_inv_scratch;
 		u = tn * tn + u1 * u1;
 
 		y1s[i] = -tn;
 		y2s[i] = -u1;
 		mags[i] = ESPLMag2(sqrt(u), rho);
 
-		tn = (ts[i] - t02) * tE_inv;
+		tn = (ts[i] - t02) * tE_inv_scratch;
 		u = tn * tn + u2 * u2;
 		if (!turn_off_secondary_source) {
 			rho2 = rho * pow(FR, mass_radius_exponent / mass_luminosity_exponent);

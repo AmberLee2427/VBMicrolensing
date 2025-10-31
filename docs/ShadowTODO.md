@@ -17,7 +17,7 @@
 - [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5761` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinSourceExtLightCurve
-- [ ] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5730` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
+- [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5730` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
 
 ## BinSourceLightCurve
 - [x] `/Users/malpas.1/Code/VBMicrolensing/VBMicrolensing/lib/VBMicrolensingLibrary.cpp:5607` – declaration shadows a field of 'VBMicrolensing' [-Wshadow]
