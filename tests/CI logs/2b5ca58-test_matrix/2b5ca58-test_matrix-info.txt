@@ -1,0 +1,50 @@
+#https://github.com/AmberLee2427/VBMicrolensing/actions/runs/18977932102
+@AmberLee2427AmberLee2427
+pushed
+ 2b5ca58
+feature/unit-tests
+Status
+Success
+Total duration
+1m 46s
+Artifacts
+6
+
+
+Annotations
+7 notices
+editable • py3.10 • ubuntu-latest
+VBMicrolensing extension loaded from /opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/VBMicrolensing/VBMicrolensing.so
+cmake-local • py3.12 • macos-15
+VBMicrolensing extension loaded from /Users/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+pip-wheel • py3.12 • macos-14
+VBMicrolensing extension loaded from /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/VBMicrolensing/VBMicrolensing.so
+pip-wheel • py3.12 • ubuntu-latest
+VBMicrolensing extension loaded from /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/VBMicrolensing/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+VBMicrolensing extension loaded from /Users/runner/work/VBMicrolensing/VBMicrolensing/build/VBMicrolensing.so
+cmake-local • py3.11 • macos-13
+The macOS-13 based runner images are being deprecated, consider switching to macOS-15 (macos-15-intel) or macOS 15 arm64 (macos-latest) instead. For more details see https://github.com/actions/runner-images/issues/13046
+pip-wheel • py3.11 • windows-latest
+VBMicrolensing extension loaded from C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\site-packages\VBMicrolensing\VBMicrolensing.pyd
+Artifacts
+Produced during runtime
+Name	Size	Digest	
+pytest-log-macos-13-py3.11-cmake-local
+933 Bytes	
+sha256:12cc14b1df7fb671034550768452baa5b5d8a5c49c5903bbe727da6b7e534001
+pytest-log-macos-14-py3.12-pip-wheel
+961 Bytes	
+sha256:e32eb97d219afcbaabcdcede01c8a9a8779df78d5ac065d1082d38710486f067
+pytest-log-macos-15-py3.12-cmake-local
+934 Bytes	
+sha256:e502f799bc37763abff4b72bd7150e45cce9a29103f0e032a3c40ea905dbaa82
+pytest-log-ubuntu-latest-py3.10-editable
+939 Bytes	
+sha256:4bcbcd299c966a886e08ca58ce11df5920e90909835fc7d876dcadd81673e362
+pytest-log-ubuntu-latest-py3.12-pip-wheel
+949 Bytes	
+sha256:c3b13f89d835c24320cdaee6a74ca8f954fbd425fba9164c22a57583cdb44a1b
+pytest-log-windows-latest-py3.11-pip-wheel
+951 Bytes	
+sha256:e401e25afe1c0472a419e60ef240c9b75058f7e9608e5ebc6a76e0c4bb8574f4

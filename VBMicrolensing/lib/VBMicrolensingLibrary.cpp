@@ -5547,13 +5547,13 @@ void VBMicrolensing::ESPLLightCurveParallax(double* pr, double* ts, double* mags
 
 
 void VBMicrolensing::BinaryLightCurve(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np) {
-	double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]);
+	double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv_scratch = exp(-pr[5]);
 	double salpha = sin(pr[3]), calpha = cos(pr[3]);
 
 	//	_sols *Images; double Mag; // For debugging
 
 	for (int i = 0; i < np; i++) {
-		tn = (ts[i] - pr[6]) * tE_inv;
+		tn = (ts[i] - pr[6]) * tE_inv_scratch;
 		y1s[i] = pr[2] * salpha - tn * calpha;
 		y2s[i] = -pr[2] * calpha - tn * salpha;
 		mags[i] = BinaryMag2(s, q, y1s[i], y2s[i], rho);
@@ -5569,16 +5569,16 @@ void VBMicrolensing::BinaryLightCurve(double* pr, double* ts, double* mags, doub
 
 
 void VBMicrolensing::BinaryLightCurveW(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np) {
-	double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), t0, u0;
+	double s = exp(pr[0]), q = exp(pr[1]), rho = exp(pr[4]), tn, tE_inv_scratch = exp(-pr[5]), t0, u0;
 	double salpha = sin(pr[3]), calpha = cos(pr[3]), xc;
 
 	xc = (s - 1 / s) / (1 + q);
 	if (xc < 0) xc = 0.;
-	t0 = pr[6] + xc * calpha / tE_inv;
+	t0 = pr[6] + xc * calpha / tE_inv_scratch;
 	u0 = pr[2] + xc * salpha;
 
 	for (int i = 0; i < np; i++) {
-		tn = (ts[i] - t0) * tE_inv;
+		tn = (ts[i] - t0) * tE_inv_scratch;
 		y1s[i] = u0 * salpha - tn * calpha;
 		y2s[i] = -u0 * calpha - tn * salpha;
 		mags[i] = BinaryMag2(s, q, y1s[i], y2s[i], rho);
@@ -5655,7 +5655,7 @@ void VBMicrolensing::BinSourceLightCurveParallax(double* pr, double* ts, double*
 
 
 void VBMicrolensing::BinSourceLightCurveXallarap(double* pr, double* ts, double* mags, double* y1s, double* y2s, double* seps, int np) {
-	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv_scratch = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
+	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR = exp(pr[1]), tn, u, u0, pai1 = pr[6], pai2 = pr[7], q = pr[8], w1 = pr[9], w2 = pr[10], w3 = pr[11];
 	double th, Cth, Sth;
 	double s, s_true, w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, COm, SOm;
 	double w13, w123, den, den0, du0, dt0;
@@ -5663,8 +5663,8 @@ void VBMicrolensing::BinSourceLightCurveXallarap(double* pr, double* ts, double*
 	parallaxextrapolation = 0;
 
 
-	s = sqrt((u1 - u2) * (u1 - u2) + (t01 - t02) * (t01 - t02) * (tE_inv_scratch * tE_inv_scratch));
-	th = atan2((u1 - u2), (tE_inv_scratch * (t01 - t02)));
+	s = sqrt((u1 - u2) * (u1 - u2) + (t01 - t02) * (t01 - t02) * (tE_inv * tE_inv));
+	th = atan2((u1 - u2), (tE_inv * (t01 - t02)));
 	Cth = cos(th);
 	Sth = sin(th);
 	u0 = (u1 + u2 * q) / (1 + q);
@@ -5706,7 +5706,7 @@ void VBMicrolensing::BinSourceLightCurveXallarap(double* pr, double* ts, double*
 		dt0 = s_true * (COm * Cphi - Cinc * SOm * Sphi) / (1 + q) * q;  //Position of the primary component with respect to center of mass
 		du0 = s_true * (SOm * Cphi + Cinc * COm * Sphi) / (1 + q) * q;
 
-		tn = -((ts[i] + lighttravel - t0_par- lighttravel0) * tE_inv_scratch + dt0 + pai1 * Et[0] + pai2 * Et[1]);
+		tn = -((ts[i] + lighttravel - t0_par- lighttravel0) * tE_inv + dt0 + pai1 * Et[0] + pai2 * Et[1]);
 		u = -(u0 + du0 + pai1 * Et[1] - pai2 * Et[0]);
 		y1s[i] = tn;
 		y2s[i] = u;
@@ -5714,7 +5714,7 @@ void VBMicrolensing::BinSourceLightCurveXallarap(double* pr, double* ts, double*
 
 		mags[i] = (u + 2) / sqrt(u * (u + 4));
 
-		tn = -((ts[i] + lighttravel - t0_par- lighttravel0) * tE_inv_scratch - dt0 / q + pai1 * Et[0] + pai2 * Et[1]); // Position of the secondary component
+		tn = -((ts[i] + lighttravel - t0_par- lighttravel0) * tE_inv - dt0 / q + pai1 * Et[0] + pai2 * Et[1]); // Position of the secondary component
 		u = -(u0 - du0 / q + pai1 * Et[1] - pai2 * Et[0]);
 		u = tn * tn + u * u;
 
