@@ -5603,17 +5603,17 @@ void VBMicrolensing::BinaryLightCurveKepler(double* pr, double* ts, double* mags
 }
 
 void VBMicrolensing::BinSourceLightCurve(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np) {
-	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv = exp(-pr[0]), FR=exp(pr[1]), tn, u;
+	double u1 = pr[2], u2 = pr[3], t01 = pr[4], t02 = pr[5], tE_inv_scratch = exp(-pr[0]), FR=exp(pr[1]), tn, u;
 
 	for (int i = 0; i < np; i++) {
-		tn = (ts[i] - t01) * tE_inv;
+		tn = (ts[i] - t01) * tE_inv_scratch;
 		u = tn * tn + u1 * u1;
 
 		y1s[i] = -tn;
 		y2s[i] = -u1;
 		mags[i] = (u + 2) / sqrt(u * (u + 4));
 
-		tn = (ts[i] - t02) * tE_inv;
+		tn = (ts[i] - t02) * tE_inv_scratch;
 		u = tn * tn + u2 * u2;
 
 		if (!turn_off_secondary_source) {
