@@ -3,6 +3,7 @@ from __future__ import annotations
 import contextlib
 import importlib.machinery
 import importlib.util
+import os
 import site
 import subprocess
 import sys
@@ -37,26 +38,36 @@ def _site_package_dirs() -> list[Path]:
 
 
 def _find_extension_candidates() -> list[Path]:
-    candidates: list[Path] = []
+    seen: set[Path] = set()
+    ordered: list[Path] = []
+
+    def add(path: Path):
+        resolved = path.resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            ordered.append(resolved)
+
+    override = os.environ.get("VBM_EXTENSION_OVERRIDE")
+    if override:
+        candidate = Path(override).expanduser()
+        if candidate.exists():
+            add(candidate)
+
     for base in _site_package_dirs():
         pkg_dir = base / "VBMicrolensing"
         if pkg_dir.is_dir():
             for path in pkg_dir.glob("VBMicrolensing*"):
                 if path.is_file() and path.suffix in _EXTENSION_SUFFIXES:
-                    candidates.append(path)
-    build_dir = ROOT / "build"
-    if build_dir.exists():
+                    add(path)
+
+    for build_dir in ROOT.glob("build*"):
+        if not build_dir.is_dir():
+            continue
         for path in build_dir.glob("**/VBMicrolensing*"):
             if path.is_file() and path.suffix in _EXTENSION_SUFFIXES:
-                candidates.append(path)
-    seen: set[Path] = set()
-    unique: list[Path] = []
-    for candidate in candidates:
-        resolved = candidate.resolve()
-        if resolved not in seen:
-            seen.add(resolved)
-            unique.append(resolved)
-    return sorted(unique)
+                add(path)
+
+    return ordered
 
 
 def _load_extension(path: Path):

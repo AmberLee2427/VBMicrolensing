@@ -39,6 +39,7 @@ __pycache__/
 # Build outputs
 /build/
 /coverage/
+build-coverage/
 
 ### Example user template template
 ### Example user template

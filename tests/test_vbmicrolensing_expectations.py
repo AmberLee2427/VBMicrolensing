@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import os
 import site
 import subprocess
 import sys
@@ -17,26 +18,36 @@ EXTENSION_SUFFIXES = (".so", ".pyd", ".dylib", ".dll")
 
 
 def _discover_extension_candidates() -> list[Path]:
-    candidates: list[Path] = []
     seen: set[Path] = set()
+    ordered: list[Path] = []
+
+    def add(path: Path):
+        resolved = path.resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            ordered.append(resolved)
+
+    override = os.environ.get("VBM_EXTENSION_OVERRIDE")
+    if override:
+        candidate = Path(override).expanduser()
+        if candidate.exists():
+            add(candidate)
+
     for base in site.getsitepackages():
         pkg_dir = Path(base) / "VBMicrolensing"
         if pkg_dir.is_dir():
             for candidate in pkg_dir.glob("VBMicrolensing*"):
                 if candidate.is_file() and candidate.suffix in EXTENSION_SUFFIXES:
-                    real = candidate.resolve()
-                    if real not in seen:
-                        seen.add(real)
-                        candidates.append(real)
-    build_dir = ROOT / "build"
-    if build_dir.exists():
+                    add(candidate)
+
+    for build_dir in ROOT.glob("build*"):
+        if not build_dir.is_dir():
+            continue
         for candidate in build_dir.glob("**/VBMicrolensing*"):
             if candidate.is_file() and candidate.suffix in EXTENSION_SUFFIXES:
-                real = candidate.resolve()
-                if real not in seen:
-                    seen.add(real)
-                    candidates.append(real)
-    return sorted(candidates)
+                add(candidate)
+
+    return ordered
 
 
 EXTENSION_CANDIDATES = _discover_extension_candidates()
@@ -47,7 +58,7 @@ LOCAL_EXTENSION = next(
     (
         path
         for path in EXTENSION_CANDIDATES
-        if (ROOT / "build") in path.parents
+        if any(candidate_dir in path.parents for candidate_dir in (ROOT / "build", ROOT / "build-coverage"))
     ),
     None,
 )

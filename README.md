@@ -61,14 +61,13 @@ GNU Lesser General Public License Version 3 included in this repository.
 
 ## Coverage Report
 
-```bash
-mkdir -p coverage
-gcovr --root . --object-directory build --filter ".*VBMicrolensing/lib/.*" --gcov-ignore-errors=no_working_dir_found --exclude-directories ".*/CMakeFiles/[0-9].*"
-```
-
-HTML coverage report:
+We ship a helper that rebuilds the C++ extension with GCC coverage flags, runs
+the Python tests, and emits reports under `coverage/` (HTML + text summaries):
 
 ```bash
-gcovr --root . --object-directory build --filter ".*VBMicrolensing/lib/.*" --gcov-ignore-errors=no_working_dir_found --exclude-directories ".*/CMakeFiles/[0-9].*" --html-details -o coverage/cpp_coverage.html
+python -m pip install gcovr
+./tools/generate_cpp_coverage.sh
 ```
 
+The script wipes `build-coverage/`, so run it from a clean worktree if you need
+to preserve other build artefacts.
