@@ -40,3 +40,8 @@
 *.iml
 out
 gen
+
+# test stuff
+build/
+build-cmake-release/
+build-cmake-debug/
