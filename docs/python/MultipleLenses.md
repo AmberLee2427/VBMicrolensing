@@ -83,7 +83,7 @@ VBMicrolensing offers three different algorithms for multiple lenses calculation
 VBM.SetMethod(VBM.Method.Nopoly)
 ```
 
-The three different alternative methods are available as `Method.Singlepoly`, `Method.Multipoly` and `Method.Nopoly`.
+The three different alternative methods are available as `Method.Singlepoly`, `Method.Multipoly` and `Method.Nopoly`. The `SetMethod` function must be called before `SetLensGeometry`.
 
 `Method.Singlepoly` solves the lens equation with the classical associated complex polynomial. It suffers from numerical errors, making it inaccurate even with configurations involving three lenses when two lenses are small. It is offered here just as a reference, but it is not intended to be used in any scientific calculations.
 
@@ -92,5 +92,7 @@ The three different alternative methods are available as `Method.Singlepoly`, `M
 `Method.Nopoly` uses a Newton-Raphson method on the lens equation without any manipulations. Nopoly is slower than Multipoly for 3 lenses but is faster with 4 or more lenses, where it proves to be the most reliable and accurate method. This is the default method if the user makes no choice.
 
 The full details of all algorithms are described in [V. Bozza, v. Saggese, G. Covone, P. Rota & J. Zhang, A&A 694 (2025) 219](https://ui.adsabs.harvard.edu/abs/2025A%26A...694A.219B/abstract).
+
+We also note that a separate function is also provided for [Polynomial solving](PolynomialRoots.md).
 
 [Go to **Critical curves and caustics**](CriticalCurvesAndCaustics.md)

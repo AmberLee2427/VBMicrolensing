@@ -324,8 +324,8 @@ PYBIND11_MODULE(VBMicrolensing, m) {
         {
             _sols_for_skiplist_curve* cimages;
             std::vector<std::vector<std::vector<double> > > images;
-            self.BinaryMag(s,q,y1,y2,rho,self.Tol,&cimages);
- 
+            self.BinaryMag(s, q, y1, y2, rho, self.Tol, &cimages);
+
             for (_skiplist_curve* scurve = cimages->first; scurve; scurve = scurve->next) {
                 std::vector<std::vector<double> > newimage(2);
                 for (_point* scan = scurve->first; scan; scan = scan->next) {
@@ -410,8 +410,8 @@ PYBIND11_MODULE(VBMicrolensing, m) {
     //            Format \"hr:mn:sc +deg:pr:sc\".
     //        )mydelimiter");
 
-    vbm.def("SetObjectCoordinates", 
-        [](VBMicrolensing& self, char* coordinatestring) 
+    vbm.def("SetObjectCoordinates",
+        [](VBMicrolensing& self, char* coordinatestring)
         {
             self.SetObjectCoordinates(coordinatestring);
             if (!self.AreCoordinatesSet()) {
@@ -427,7 +427,7 @@ PYBIND11_MODULE(VBMicrolensing, m) {
                 Format \"hr:mn:sc +deg:pr:sc\".
             )mydelimiter");
 
-    vbm.def("SetObjectCoordinates", 
+    vbm.def("SetObjectCoordinates",
         [](VBMicrolensing& self, char* coordinatefile, char* sattabledir)
         {
             if (std::filesystem::exists(sattabledir)) {
@@ -1931,9 +1931,74 @@ PYBIND11_MODULE(VBMicrolensing, m) {
             The magnification.
         )pbdoc");
 
+    vbm.def("BinaryMag0_shear",
+        (double (VBMicrolensing::*)(double, double, double, double, double, double, double))
+        & VBMicrolensing::BinaryMag0_shear,
+        py::return_value_policy::reference,
+        R"mydelimiter(
+            Magnification of a point-source by a binary lens.
+
+            Parameters
+            ----------
+            s : float 
+                The projected separation of the binary lens in units of the 
+                Einstein radius corresponding to the total mass.
+            q : float 
+                Binary lens mass fraction q = m1/m2 s.t. m1<m2 
+            y1 : float 
+                x-position of the source in the source plane.
+            y2 : float 
+                y-position of the source in the source plane.
+            convergence_K : float
+                External mass sheet convergence.
+            shear_G_re : float
+                External mass sheet shear - real part.
+            shear_G_im : float
+                External mass sheet shear - imaginary part.
+
+            Returns
+            -------
+            float
+                Magnification.
+            )mydelimiter");
+
     vbm.def("SetMethod",
         &VBMicrolensing::SetMethod,
         "User choice of Method");
+
+    // Skowron Gould polnomial solver
+    vbm.def("cmplx_roots_gen",
+        [](VBMicrolensing& self, std::vector<std::vector<double>> coefficients)
+        {
+
+            int n = coefficients.size() - 1;
+            std::vector<std::vector<double>> roots(n, std::vector<double> {0, 0});
+            std::vector<complex> zr(n);
+            std::vector<complex> poly(n + 1);
+            for (int i = 0; i < n + 1; i++) {
+                poly[i] = complex(coefficients[i][0], coefficients[i][1]);
+            }
+            self.cmplx_roots_gen(zr.data(), poly.data(), n, true, true);
+            for (int i = 0; i < n; i++) {
+                roots[i][0] = zr[i].re;
+                roots[i][1] = zr[i].im;
+            }
+            return roots;
+        },
+        R"mydelimiter(
+            Roots of a polynomial with given complex coefficients.
+            Parameters
+            ----------
+            coefficients : list[complex]
+                The polynomial is structured as
+                coefficients[0] x^0 + coefficients[1] x^1 + coefficients[2] x^2 + ...
+
+            Returns
+            -------
+            roots: list[complex] 
+                List of roots
+            )mydelimiter");
+
 
     //  Method: Singlepoly, Multipoly, Nopoly
     py::enum_<VBMicrolensing::Method>(vbm, "Method")
@@ -1970,7 +2035,7 @@ PYBIND11_MODULE(VBMicrolensing, m) {
         .def_readwrite("prev", &_curve::prev);
 
     py::class_<_skiplist_curve>(m, "_skiplist_curve")
-        .def(py::init<_point*,int>()) //constructor 1
+        .def(py::init<_point*, int>()) //constructor 1
         .def(py::init()) //constructor 2
         .def_readwrite("first", &_skiplist_curve::first)
         .def_readwrite("last", &_skiplist_curve::last)
