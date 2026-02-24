@@ -2,6 +2,11 @@ name: Test Conda Recipe
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to smoke-test from PyPI (defaults to pyproject.toml version)"
+        required: false
+        type: string
   release:
     types: [published]
 
@@ -10,6 +15,7 @@ permissions:
 
 jobs:
   conda-build:
+    if: github.event_name != 'release' || vars.ENABLE_PYPI_PUBLISH == 'true'
     name: ${{ matrix.os }} / py${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
@@ -29,6 +35,100 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Resolve version and sync recipe from PyPI
+        id: pypi
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            tag="${{ github.event.release.tag_name }}"
+            version="${tag#v}"
+          elif [[ -n "${{ inputs.version || '' }}" ]]; then
+            version="${{ inputs.version }}"
+            tag="v${version}"
+          else
+            version="$(grep -m1 '^version = "' pyproject.toml | sed -E 's/version = "([^"]+)"/\1/')"
+            tag="v${version}"
+          fi
+
+          pyproject_version="$(grep -m1 '^version = "' pyproject.toml | sed -E 's/version = "([^"]+)"/\1/')"
+          if [[ "$version" != "$pyproject_version" ]]; then
+            echo "Version mismatch: tag/dispatch version '$version' vs pyproject.toml '$pyproject_version'" >&2
+            exit 1
+          fi
+
+          echo "Target version: $version"
+
+          for attempt in $(seq 1 10); do
+            if python - "$version" <<'PY'
+import json
+import sys
+import urllib.request
+
+version = sys.argv[1]
+url = f"https://pypi.org/pypi/vbmicrolensing/{version}/json"
+with urllib.request.urlopen(url, timeout=30) as r:
+    data = json.load(r)
+
+sdists = [u for u in data.get("urls", []) if u.get("packagetype") == "sdist"]
+if not sdists:
+    raise SystemExit("No sdist found on PyPI for version " + version)
+
+sdist = sdists[0]
+print(sdist["url"])
+print(sdist["digests"]["sha256"])
+PY
+            then
+              break
+            fi
+
+            if [[ "$attempt" -eq 10 ]]; then
+              echo "PyPI sdist metadata not available for vbmicrolensing==$version after retries" >&2
+              exit 1
+            fi
+
+            echo "PyPI metadata not ready yet (attempt $attempt/10), retrying in 30s..." >&2
+            sleep 30
+          done > /tmp/pypi_sdist_info.txt
+
+          source_url="$(sed -n '1p' /tmp/pypi_sdist_info.txt)"
+          source_sha256="$(sed -n '2p' /tmp/pypi_sdist_info.txt)"
+
+          echo "PyPI sdist URL: $source_url"
+          echo "PyPI sdist SHA256: $source_sha256"
+
+          python - "$version" "$source_sha256" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+version, sha256 = sys.argv[1:3]
+path = Path("conda/meta.yaml")
+text = path.read_text()
+
+text, n1 = re.subn(
+    r'(\{%\s*set\s+version\s*=\s*")[^"]+("\s*%\})',
+    rf'\g<1>{version}\2',
+    text,
+    count=1,
+)
+text, n2 = re.subn(
+    r'(^\s*sha256:\s*)[0-9a-f]{64}(\s*$)',
+    rf'\1{sha256}\2',
+    text,
+    count=1,
+    flags=re.MULTILINE,
+)
+
+if n1 != 1 or n2 != 1:
+    raise SystemExit("Failed to patch conda/meta.yaml version/sha256")
+
+path.write_text(text)
+PY
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "sha256=$source_sha256" >> "$GITHUB_OUTPUT"
 
       - name: Set up Miniforge
         uses: conda-incubator/setup-miniconda@v3
