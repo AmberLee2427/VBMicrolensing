@@ -14,6 +14,7 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14,macos-15] # was macos-latest
 
@@ -24,6 +25,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.22.0
         env:                            #
           MACOSX_DEPLOYMENT_TARGET: "10.15" # 
+          CIBW_ARCHS_WINDOWS: AMD64
           CIBW_SKIP: pp*
         #   CIBW_SOME_OPTION: value
         #    ...
