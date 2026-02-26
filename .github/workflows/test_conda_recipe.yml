@@ -114,16 +114,35 @@ jobs:
           conda run --no-capture-output -n conda-build-tools conda info
           conda run --no-capture-output -n conda-build-tools conda list | grep -E '^(conda|conda-build|conda-index|libmamba|conda-libmamba-solver)\s' || true
 
+      - name: Prepare conda-build variants for smoke test
+        run: |
+          variant_file="conda/conda_build_config.smoke.yaml"
+
+          case "${{ matrix.python-version }}" in
+            3.13) numpy_variant="2" ;;
+            *)    numpy_variant="1.26" ;;
+          esac
+
+          cat > "$variant_file" <<EOF
+          numpy:
+            - ${numpy_variant}
+          EOF
+
+          echo "Using numpy variant ${numpy_variant} for python ${{ matrix.python-version }}"
+          cat "$variant_file"
+
       - name: Render recipe
         run: |
           conda run --no-capture-output -n conda-build-tools conda render conda \
             --override-channels -c conda-forge \
+            -m conda/conda_build_config.smoke.yaml \
             --python "${{ matrix.python-version }}"
 
       - name: Build and test recipe
         run: |
           conda run --no-capture-output -n conda-build-tools conda build conda \
             --override-channels -c conda-forge \
+            -m conda/conda_build_config.smoke.yaml \
             --python "${{ matrix.python-version }}" \
             --no-anaconda-upload
 
