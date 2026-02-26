@@ -94,7 +94,9 @@ jobs:
           miniforge-version: latest
           auto-update-conda: false
           activate-environment: base
-          python-version: ${{ matrix.python-version }}
+          # Keep CI tooling on a conda-build-compatible Python; target Python is set in
+          # `conda render/build --python` below.
+          python-version: "3.12"
           channels: conda-forge
           channel-priority: strict
           use-mamba: true
