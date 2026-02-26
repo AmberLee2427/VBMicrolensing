@@ -101,7 +101,8 @@ jobs:
       - name: Install conda-build tooling
         run: |
           conda info
-          mamba install -n base -c conda-forge "conda-build>=26" "conda-index>=0.7"
+          mamba install -n base -c conda-forge "conda-build>=25,<26" "conda-index>=0.7"
+          conda config --set solver classic
 
       - name: Render recipe
         run: |
