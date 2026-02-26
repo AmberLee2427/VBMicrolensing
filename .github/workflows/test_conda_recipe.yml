@@ -117,7 +117,7 @@ jobs:
 
           echo "Creating conda-build-tools environment with ${create_solver}"
           "${create_cmd[@]}" \
-            python=3.12 \
+            python=3.11 \
             "conda<26" \
             "conda-build>=25,<26" \
             "conda-index>=0.7" \
