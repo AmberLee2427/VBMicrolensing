@@ -63,7 +63,8 @@ jobs:
           for attempt in $(seq 1 10); do
             if python .github/scripts/conda_recipe_sync_from_pypi.py "$version" \
               --package vbmicrolensing \
-              --recipe conda/meta.yaml
+              --recipe conda/meta.yaml \
+              --drop-stdlib-c
             then
               break
             fi

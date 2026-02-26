@@ -21,7 +21,9 @@ def fetch_sdist(package: str, version: str) -> tuple[str, str]:
     return sdist["url"], sdist["digests"]["sha256"]
 
 
-def patch_recipe(recipe_path: Path, version: str, sha256: str) -> None:
+def patch_recipe(
+    recipe_path: Path, version: str, sha256: str, *, drop_stdlib_c: bool = False
+) -> None:
     text = recipe_path.read_text()
 
     text, n1 = re.subn(
@@ -41,6 +43,18 @@ def patch_recipe(recipe_path: Path, version: str, sha256: str) -> None:
     if n1 != 1 or n2 != 1:
         raise SystemExit("Failed to patch conda/meta.yaml version/sha256")
 
+    if drop_stdlib_c:
+        text, n3 = re.subn(
+            r"(?m)^\s*-\s+\{\{\s*stdlib\('c'\)\s*\}\}\s*$\n?",
+            "",
+            text,
+            count=1,
+        )
+        if n3:
+            sys.stderr.write(
+                "Smoke-test patch: removed {{ stdlib('c') }} requirement for standalone CI\n"
+            )
+
     recipe_path.write_text(text)
 
 
@@ -55,10 +69,20 @@ def main() -> int:
     parser.add_argument(
         "--recipe", default="conda/meta.yaml", help="Path to recipe file (default: conda/meta.yaml)"
     )
+    parser.add_argument(
+        "--drop-stdlib-c",
+        action="store_true",
+        help="Remove {{ stdlib('c') }} from build requirements (for standalone smoke CI only)",
+    )
     args = parser.parse_args()
 
     source_url, source_sha256 = fetch_sdist(args.package, args.version)
-    patch_recipe(Path(args.recipe), args.version, source_sha256)
+    patch_recipe(
+        Path(args.recipe),
+        args.version,
+        source_sha256,
+        drop_stdlib_c=args.drop_stdlib_c,
+    )
 
     sys.stdout.write(source_url + "\n")
     sys.stdout.write(source_sha256 + "\n")
