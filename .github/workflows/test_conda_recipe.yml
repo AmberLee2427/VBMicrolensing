@@ -104,18 +104,25 @@ jobs:
       - name: Install conda-build tooling
         run: |
           conda info
-          mamba install -n base -c conda-forge "conda<25" "conda-build<25" "conda-index>=0.7"
-          conda list | grep -E '^(conda|conda-build|conda-index|libmamba|conda-libmamba-solver)\s' || true
+          # Keep the Miniforge base untouched (setup-miniconda currently provisions conda on
+          # Python 3.13 on some runners). Build a separate tooling env instead.
+          mamba create -y -n conda-build-tools -c conda-forge \
+            python=3.12 \
+            "conda<26" \
+            "conda-build>=25,<26" \
+            "conda-index>=0.7"
+          conda run --no-capture-output -n conda-build-tools conda info
+          conda run --no-capture-output -n conda-build-tools conda list | grep -E '^(conda|conda-build|conda-index|libmamba|conda-libmamba-solver)\s' || true
 
       - name: Render recipe
         run: |
-          conda render conda \
+          conda run --no-capture-output -n conda-build-tools conda render conda \
             --override-channels -c conda-forge \
             --python "${{ matrix.python-version }}"
 
       - name: Build and test recipe
         run: |
-          conda build conda \
+          conda run --no-capture-output -n conda-build-tools conda build conda \
             --override-channels -c conda-forge \
             --python "${{ matrix.python-version }}" \
             --no-anaconda-upload
