@@ -99,6 +99,7 @@ jobs:
           python-version: "3.12"
           channels: conda-forge
           channel-priority: strict
+          conda-remove-defaults: true
           use-mamba: true
 
       - name: Install conda-build tooling
@@ -106,11 +107,21 @@ jobs:
           conda info
           # Keep the Miniforge base untouched (setup-miniconda currently provisions conda on
           # Python 3.13 on some runners). Build a separate tooling env instead.
-          mamba create -y -n conda-build-tools -c conda-forge \
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            create_solver="conda"
+            create_cmd=(conda create -y -n conda-build-tools -c conda-forge)
+          else
+            create_solver="mamba"
+            create_cmd=(mamba create -y -n conda-build-tools -c conda-forge)
+          fi
+
+          echo "Creating conda-build-tools environment with ${create_solver}"
+          "${create_cmd[@]}" \
             python=3.12 \
             "conda<26" \
             "conda-build>=25,<26" \
-            "conda-index>=0.7"
+            "conda-index>=0.7" \
+            conda-verify
           conda run --no-capture-output -n conda-build-tools conda info
           conda run --no-capture-output -n conda-build-tools conda list | grep -E '^(conda|conda-build|conda-index|libmamba|conda-libmamba-solver)\s' || true
 
