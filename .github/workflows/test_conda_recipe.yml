@@ -61,24 +61,9 @@ jobs:
           echo "Target version: $version"
 
           for attempt in $(seq 1 10); do
-            if python - "$version" <<'PY'
-import json
-import sys
-import urllib.request
-
-version = sys.argv[1]
-url = f"https://pypi.org/pypi/vbmicrolensing/{version}/json"
-with urllib.request.urlopen(url, timeout=30) as r:
-    data = json.load(r)
-
-sdists = [u for u in data.get("urls", []) if u.get("packagetype") == "sdist"]
-if not sdists:
-    raise SystemExit("No sdist found on PyPI for version " + version)
-
-sdist = sdists[0]
-print(sdist["url"])
-print(sdist["digests"]["sha256"])
-PY
+            if python .github/scripts/conda_recipe_sync_from_pypi.py "$version" \
+              --package vbmicrolensing \
+              --recipe conda/meta.yaml
             then
               break
             fi
@@ -97,35 +82,6 @@ PY
 
           echo "PyPI sdist URL: $source_url"
           echo "PyPI sdist SHA256: $source_sha256"
-
-          python - "$version" "$source_sha256" <<'PY'
-from pathlib import Path
-import re
-import sys
-
-version, sha256 = sys.argv[1:3]
-path = Path("conda/meta.yaml")
-text = path.read_text()
-
-text, n1 = re.subn(
-    r'(\{%\s*set\s+version\s*=\s*")[^"]+("\s*%\})',
-    rf'\g<1>{version}\2',
-    text,
-    count=1,
-)
-text, n2 = re.subn(
-    r'(^\s*sha256:\s*)[0-9a-f]{64}(\s*$)',
-    rf'\1{sha256}\2',
-    text,
-    count=1,
-    flags=re.MULTILINE,
-)
-
-if n1 != 1 or n2 != 1:
-    raise SystemExit("Failed to patch conda/meta.yaml version/sha256")
-
-path.write_text(text)
-PY
 
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "sha256=$source_sha256" >> "$GITHUB_OUTPUT"
