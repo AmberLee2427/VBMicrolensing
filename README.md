@@ -26,16 +26,7 @@ If specifically relevant to your work, please also cite
 
 ### Python
 
-The easiest way to install `VBMicrolensing` is through `pip install VBMicrolensing`
-
-In alternative, in order to use the latest build, clone this GitHub repository on your computer, enter your local copy of the repository and run
-```
-pip install .
-```
-
-Currently, `VBMicrolensing` works on Linux, Windows, MacOS and python >= 3.7. The package requires a C++ compiler supporting C++17.
-
-### Conda
+The easiest way to install `VBMicrolensing` is through `pip install VBMicrolensing`.
 
 Pre-built packages are available on [conda-forge](https://anaconda.org/conda-forge/vbmicrolensing) under the name `vbmicrolensing`:
 
@@ -48,6 +39,13 @@ If you use [mamba](https://mamba.readthedocs.io/) or [micromamba](https://mamba.
 ```bash
 mamba install -c conda-forge vbmicrolensing
 ```
+
+In alternative, in order to use the latest build, clone this GitHub repository on your computer, enter your local copy of the repository and run
+```
+pip install .
+```
+
+Currently, `VBMicrolensing` works on Linux, Windows, MacOS and python >= 3.7. The package requires a C++ compiler supporting C++17.
 
 ### C++
 

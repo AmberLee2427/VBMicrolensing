@@ -40,7 +40,7 @@ so pushes and tags on forks do not publish to PyPI.
 1. Bump `version` in `pyproject.toml` and add an entry in `changelog.md`.
 2. Merge the version bump to `valboz/VBMicrolensing` `main`.
 3. Create and push an annotated tag `v<version>` matching `pyproject.toml` (for example `v5.4.1`).
-4. Confirm the *Publish PyPI And Release* workflow completes; wheels and sdist should appear on PyPI.
+4. Confirm the automated *Publish PyPI And Release* workflow completes; wheels and sdist should appear on PyPI.
 5. Proceed with the conda-forge bot PR flow below (no manual feedstock edit is needed for a simple version bump).
 
 **TestPyPI without a tag**
