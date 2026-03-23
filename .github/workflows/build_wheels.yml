@@ -18,14 +18,14 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-14,macos-15] # was macos-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.4.0
         env:
           # Match cibuildwheel minimum on Apple Silicon runners (avoids repeated bump logs).
           MACOSX_DEPLOYMENT_TARGET: "11.0"
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -33,12 +33,12 @@ jobs:
     name: Build source distribution
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Build sdist
         run: pipx run build --sdist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: cibw-sdist
           path: dist/*.tar.gz
