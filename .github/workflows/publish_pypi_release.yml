@@ -28,7 +28,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-14, macos-15]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Prefetch cibuildwheel virtualenv helper
         run: python .github/scripts/prefetch_cibuildwheel_virtualenv.py
@@ -38,9 +38,8 @@ jobs:
         env:
           MACOSX_DEPLOYMENT_TARGET: "11.0"
           CIBW_ARCHS_WINDOWS: AMD64
-          CIBW_SKIP: pp*
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: dist-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -50,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
@@ -61,7 +60,7 @@ jobs:
           python -m pip install --upgrade pip build
           python -m build --sdist
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: dist-sdist
           path: dist/*.tar.gz
@@ -76,7 +75,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: dist-*
           merge-multiple: true
@@ -100,7 +99,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: dist-*
           merge-multiple: true
@@ -124,10 +123,10 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: dist-*
           merge-multiple: true
