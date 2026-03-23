@@ -24,6 +24,42 @@ It explains:
 4. Review/fix the feedstock PR if needed, then merge it.
 5. conda-forge CI builds and publishes the new conda package.
 
+## PyPI release checklist (primary maintainer: `valboz/VBMicrolensing`)
+
+Publishing is implemented in `.github/workflows/publish_pypi_release.yml`. It only uploads
+when the workflow runs on the upstream repository (`github.repository == 'valboz/VBMicrolensing'`),
+so pushes and tags on forks do not publish to PyPI.
+
+**One-time setup (repo admin on `valboz/VBMicrolensing`)**
+
+- Add a PyPI API token as repository secret `PYPI_API_TOKEN` (scoped to this project).
+- Optional: add `TEST_PYPI_API_TOKEN` for dry runs on TestPyPI.
+
+**Release steps**
+
+1. Bump `version` in `pyproject.toml` and add an entry in `changelog.md`.
+2. Merge the version bump to `valboz/VBMicrolensing` `main`.
+3. Create and push an annotated tag `v<version>` matching `pyproject.toml` (for example `v5.4.1`).
+4. Confirm the *Publish PyPI And Release* workflow completes; wheels and sdist should appear on PyPI.
+5. Proceed with the conda-forge bot PR flow below (no manual feedstock edit is needed for a simple version bump).
+
+**TestPyPI without a tag**
+
+- Use *Actions → Publish PyPI And Release → Run workflow*, choose `testpypi`, run on `main`.
+- Artifacts still build for every run; only the publish job is gated by tag or manual choice.
+
+## Overlapping conda-forge bot pull requests
+
+When several bot PRs exist at once, treat them in this order:
+
+1. **Infrastructure / migration PRs** (for example *Rebuild for python 3.14*) merge first once CI is green.
+2. **Version bumps**: keep only the PR for the **newest** upstream version you intend to ship.
+3. If a newer bump PR says it **Closes** an older bump (for example v5.4.1 closes v5.4), merge the newest PR and **close** the obsolete one if GitHub did not auto-close it.
+4. If conda-forge-admin reports a **lint** error (for example `package.version` parsed as a float), fix by quoting the version in `recipe/meta.yaml` (for example `version: "5.4"`); newer bot PRs often include that fix.
+
+For `vbmicrolensing-feedstock`, typical resolution after PyPI has the latest release: merge the
+current version-bump PR whose CI passes and whose `meta.yaml` matches PyPI (version + `sha256`).
+
 ## Role of `test_conda_recipe.yml`
 
 `test_conda_recipe.yml` is a smoke-test workflow for this repository.
