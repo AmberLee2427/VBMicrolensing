@@ -35,6 +35,20 @@ pip install .
 
 Currently, `VBMicrolensing` works on Linux, Windows, MacOS and python >= 3.7. The package requires a C++ compiler supporting C++17.
 
+### Conda
+
+Pre-built packages are available on [conda-forge](https://anaconda.org/conda-forge/vbmicrolensing) under the name `vbmicrolensing`:
+
+```bash
+conda install -c conda-forge vbmicrolensing
+```
+
+If you use [mamba](https://mamba.readthedocs.io/) or [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+
+```bash
+mamba install -c conda-forge vbmicrolensing
+```
+
 ### C++
 
 If you just want to use the C++ library, clone this repository, all cpp files and the 
