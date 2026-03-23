@@ -1,4 +1,4 @@
-# Conda-Forge Maintenance (VBMicrolensing)
+# Release Maintenance (VBMicrolensing)
 
 This is a project-specific maintainer guide for the VBM conda package.
 
@@ -57,7 +57,7 @@ When several bot PRs exist at once, treat them in this order:
 3. If a newer bump PR says it **Closes** an older bump (for example v5.4.1 closes v5.4), merge the newest PR and **close** the obsolete one if GitHub did not auto-close it.
 4. If conda-forge-admin reports a **lint** error (for example `package.version` parsed as a float), fix by quoting the version in `recipe/meta.yaml` (for example `version: "5.4"`); newer bot PRs often include that fix.
 
-For `vbmicrolensing-feedstock`, typical resolution after PyPI has the latest release: merge the
+For [`vbmicrolensing-feedstock`](https://github.com/conda-forge/vbmicrolensing-feedstock.git), typical resolution after PyPI has the latest release: merge the
 current version-bump PR whose CI passes and whose `meta.yaml` matches PyPI (version + `sha256`).
 
 ## Role of `test_conda_recipe.yml`
@@ -95,9 +95,8 @@ Important guardrail:
   synchronized
 
 Manual run behavior:
-- if no version is provided, it uses `pyproject.toml`
-- you can override the version via the workflow input
-- it fails if the requested version does not match `pyproject.toml`
+- `workflow_dispatch` always uses the version from `pyproject.toml` and fetches that release’s sdist metadata from PyPI
+- `release.published` uses the release tag (`v*`) as the version; it fails if that version does not match `pyproject.toml` (guardrail so the smoke test stays aligned with the repo)
 
 ## After the Package Is on Conda-Forge
 

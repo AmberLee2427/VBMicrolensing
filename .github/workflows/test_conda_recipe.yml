@@ -2,11 +2,6 @@ name: Test Conda Recipe
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to smoke-test from PyPI (defaults to pyproject.toml version)"
-        required: false
-        type: string
   release:
     types: [published]
 
@@ -44,9 +39,6 @@ jobs:
           if [[ "${{ github.event_name }}" == "release" ]]; then
             tag="${{ github.event.release.tag_name }}"
             version="${tag#v}"
-          elif [[ -n "${{ inputs.version || '' }}" ]]; then
-            version="${{ inputs.version }}"
-            tag="v${version}"
           else
             version="$(grep -m1 '^version = "' pyproject.toml | sed -E 's/version = "([^"]+)"/\1/')"
             tag="v${version}"
