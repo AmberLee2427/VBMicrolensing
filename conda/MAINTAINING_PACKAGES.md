@@ -41,7 +41,7 @@ You need **admin** (or custom role with “Secrets” access) on the GitHub repo
 1. Sign in at [https://pypi.org](https://pypi.org).
 2. Open **Account settings** → **API tokens** (or [https://pypi.org/manage/account/](https://pypi.org/manage/account/) → API tokens).
 3. Choose **Add API token**.
-4. Set **Token name** (for example `github-valboz-VBMicrolensing`).
+4. Set **Token name** (for example `VBM-github-actions`).
 5. Set **Scope** to the **entire account** or, preferably, **limit to project** and select the `VBMicrolensing` (or `vbmicrolensing`) package so the token cannot upload other projects.
 6. Create the token, copy it **once** (PyPI will not show it again). It should look like `pypi-…`.
 
@@ -56,8 +56,8 @@ Official reference: [PyPI — API tokens](https://pypi.org/help/#apitoken).
 
 1. Open the repository: [https://github.com/valboz/VBMicrolensing](https://github.com/valboz/VBMicrolensing).
 2. Go to **Settings** (repo tabs, not your global GitHub settings).
-3. In the left sidebar: **Secrets and variables** → **Actions**.
-4. Open the **Secrets** tab (not *Variables* unless you intentionally use vars).
+3. In the left sidebar: **Security: Secrets and variables** → **Actions**.
+4. Open the **Secrets** tab (not *Variables*; they aren't secret).
 5. Click **New repository secret**.
 6. Add **`PYPI_API_TOKEN`**:
    - **Name** must be exactly `PYPI_API_TOKEN` (matches `.github/workflows/publish_pypi_release.yml`).
