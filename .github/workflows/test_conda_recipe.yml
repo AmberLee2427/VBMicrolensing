@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   conda-build:
     if: github.event_name != 'release' || vars.ENABLE_PYPI_PUBLISH == 'true'
@@ -139,7 +142,7 @@ jobs:
           echo "sha256=$source_sha256" >> "$GITHUB_OUTPUT"
 
       - name: Set up Miniforge
-        uses: conda-incubator/setup-miniconda@v3
+        uses: conda-incubator/setup-miniconda@v3.3.0
         with:
           miniforge-variant: Miniforge3
           miniforge-version: latest
