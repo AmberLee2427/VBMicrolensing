@@ -11,14 +11,22 @@ permissions:
 jobs:
   conda-build:
     if: github.event_name != 'release' || vars.ENABLE_PYPI_PUBLISH == 'true'
-    name: ${{ matrix.os }} / py${{ matrix.python-version }}
-    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.target }} / py${{ matrix.python-version }}
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-14, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        include:
+          - runner: ubuntu-latest
+            target: linux-64
+          - runner: ubuntu-24.04-arm
+            target: linux-aarch64
+          - runner: macos-14
+            target: osx-arm64
+          - runner: windows-latest
+            target: win-64
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
     defaults:
       run:
@@ -122,7 +130,7 @@ jobs:
           variant_file="conda/conda_build_config.smoke.yaml"
 
           case "${{ matrix.python-version }}" in
-            3.13) numpy_variant="2" ;;
+            3.13|3.14) numpy_variant="2" ;;
             *)    numpy_variant="1.26" ;;
           esac
 
@@ -153,6 +161,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: conda-${{ matrix.os }}-py${{ matrix.python-version }}
+          name: conda-${{ matrix.target }}-py${{ matrix.python-version }}
           path: ${{ github.workspace }}/conda-bld/**/*.conda
           if-no-files-found: ignore

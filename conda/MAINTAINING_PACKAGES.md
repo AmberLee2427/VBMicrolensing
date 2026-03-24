@@ -103,8 +103,8 @@ current version-bump PR whose CI passes and whose `meta.yaml` matches PyPI (vers
 `test_conda_recipe.yml` is a smoke-test workflow for this repository.
 
 What it does:
-- runs a matrix build on `ubuntu`, `macOS`, and `windows`
-- tests Python `3.10` to `3.13`
+- runs a matrix build on `linux-64`, `linux-aarch64`, `osx-arm64`, and `win-64`
+- tests Python `3.10` to `3.14`
 - fetches source tarball metadata from PyPI for the target version
 - patches `conda/meta.yaml` in CI only with the PyPI version and `sha256`
 - runs `conda render` and `conda build`
