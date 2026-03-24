@@ -40,8 +40,6 @@ If you use [mamba](https://mamba.readthedocs.io/) or [micromamba](https://mamba.
 mamba install -c conda-forge vbmicrolensing
 ```
 
-**Apple Silicon (arm64) Macs:** the [conda-forge package](https://anaconda.org/conda-forge/vbmicrolensing) is built for `linux-64`, `osx-64` (Intel macOS), and `win-64` only. There is no `osx-arm64` build yet, so `conda install` on a native arm64 environment fails with “package not found” even though the project exists on the channel. Use **`pip install VBMicrolensing`** for pre-built arm64 wheels, or create an **x86_64** conda environment (Rosetta) and set `CONDA_SUBDIR=osx-64` when solving so conda can install the `osx-64` package. To add official arm64 conda packages, the [feedstock](https://github.com/conda-forge/vbmicrolensing-feedstock) would need an `osx-arm64` build.
-
 In alternative, in order to use the latest build, clone this GitHub repository on your computer, enter your local copy of the repository and run
 ```
 pip install .
