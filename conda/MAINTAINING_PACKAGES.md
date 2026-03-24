@@ -1,4 +1,4 @@
-# Conda-Forge Maintenance (VBMicrolensing)
+# Release Maintenance (VBMicrolensing)
 
 This is a project-specific maintainer guide for the VBM conda package.
 
@@ -32,8 +32,46 @@ so pushes and tags on forks do not publish to PyPI.
 
 **One-time setup (repo admin on `valboz/VBMicrolensing`)**
 
-- Add a PyPI API token as repository secret `PYPI_API_TOKEN` (scoped to this project).
-- Optional: add `TEST_PYPI_API_TOKEN` for dry runs on TestPyPI.
+You need **admin** (or custom role with “Secrets” access) on the GitHub repository to add secrets.
+
+### 1. Create API tokens on PyPI / TestPyPI
+
+**PyPI (production)**
+
+1. Sign in at [https://pypi.org](https://pypi.org).
+2. Open **Account settings** → **API tokens** (or [https://pypi.org/manage/account/](https://pypi.org/manage/account/) → API tokens).
+3. Choose **Add API token**.
+4. Set **Token name** (for example `VBM-github-actions`).
+5. Set **Scope** to the **entire account** or, preferably, **limit to project** and select the `VBMicrolensing` (or `vbmicrolensing`) package so the token cannot upload other projects.
+6. Create the token, copy it **once** (PyPI will not show it again). It should look like `pypi-…`.
+
+**TestPyPI (optional, for manual TestPyPI runs)**
+
+1. Repeat the same steps on [https://test.pypi.org](https://test.pypi.org) (separate account state; register the package there first if you use project-scoped tokens).
+2. Store that token for the GitHub secret below.
+
+Official reference: [PyPI — API tokens](https://pypi.org/help/#apitoken).
+
+### 2. Add repository secrets in GitHub
+
+1. Open the repository: [https://github.com/valboz/VBMicrolensing](https://github.com/valboz/VBMicrolensing).
+2. Go to **Settings** (repo tabs, not your global GitHub settings).
+3. In the left sidebar: **Security: Secrets and variables** → **Actions**.
+4. Open the **Secrets** tab (not *Variables*; they aren't secret).
+5. Click **New repository secret**.
+6. Add **`PYPI_API_TOKEN`**:
+   - **Name** must be exactly `PYPI_API_TOKEN` (matches `.github/workflows/publish_pypi_release.yml`).
+   - **Secret**: paste the PyPI token from step 1.
+   - Save.
+7. Optional: add **`TEST_PYPI_API_TOKEN`** the same way for TestPyPI workflow runs.
+
+**Notes**
+
+- Secret **names** are case-sensitive and must match the workflow.
+- After saving, you cannot view the secret again in GitHub; you can only **update** or **delete** it.
+- Forks do not inherit secrets; the publish workflow also checks `github.repository == 'valboz/VBMicrolensing'` so accidental publish from a fork does not occur.
+
+Official reference: [GitHub Docs — Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
 **Release steps**
 
@@ -57,7 +95,7 @@ When several bot PRs exist at once, treat them in this order:
 3. If a newer bump PR says it **Closes** an older bump (for example v5.4.1 closes v5.4), merge the newest PR and **close** the obsolete one if GitHub did not auto-close it.
 4. If conda-forge-admin reports a **lint** error (for example `package.version` parsed as a float), fix by quoting the version in `recipe/meta.yaml` (for example `version: "5.4"`); newer bot PRs often include that fix.
 
-For `vbmicrolensing-feedstock`, typical resolution after PyPI has the latest release: merge the
+For [`vbmicrolensing-feedstock`](https://github.com/conda-forge/vbmicrolensing-feedstock.git), typical resolution after PyPI has the latest release: merge the
 current version-bump PR whose CI passes and whose `meta.yaml` matches PyPI (version + `sha256`).
 
 ## Role of `test_conda_recipe.yml`
@@ -95,9 +133,8 @@ Important guardrail:
   synchronized
 
 Manual run behavior:
-- if no version is provided, it uses `pyproject.toml`
-- you can override the version via the workflow input
-- it fails if the requested version does not match `pyproject.toml`
+- `workflow_dispatch` always uses the version from `pyproject.toml` and fetches that release’s sdist metadata from PyPI
+- `release.published` uses the release tag (`v*`) as the version; it fails if that version does not match `pyproject.toml` (guardrail so the smoke test stays aligned with the repo)
 
 ## After the Package Is on Conda-Forge
 
@@ -113,7 +150,7 @@ If the bot PR does not appear:
 
 ## Feedstock PR Rules (Condensed)
 
-- Use a fork of the feedstock, not a branch in `conda-forge/<feedstock>`
+- Use a fork of the feedstock, not a branch in `conda-forge/vbmicrolensing-feedstock`
 - New upstream version:
   - set recipe `version` to the new version
   - update source `sha256`
@@ -146,7 +183,7 @@ For staged-recipes or feedstock-style CI reproduction:
 - `pip check` false failures:
   - avoid `pip check` if upstream metadata incorrectly lists non-runtime deps
 
-## Source of Truth
+## References
 
 - Canonical conda-forge maintainer docs:
   - https://conda-forge.org/docs/maintainer/adding_pkgs/
