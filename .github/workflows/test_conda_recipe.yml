@@ -20,13 +20,64 @@ jobs:
         include:
           - runner: ubuntu-latest
             target: linux-64
+            python-version: "3.10"
+          - runner: ubuntu-latest
+            target: linux-64
+            python-version: "3.11"
+          - runner: ubuntu-latest
+            target: linux-64
+            python-version: "3.12"
+          - runner: ubuntu-latest
+            target: linux-64
+            python-version: "3.13"
+          - runner: ubuntu-latest
+            target: linux-64
+            python-version: "3.14"
           - runner: ubuntu-24.04-arm
             target: linux-aarch64
+            python-version: "3.10"
+          - runner: ubuntu-24.04-arm
+            target: linux-aarch64
+            python-version: "3.11"
+          - runner: ubuntu-24.04-arm
+            target: linux-aarch64
+            python-version: "3.12"
+          - runner: ubuntu-24.04-arm
+            target: linux-aarch64
+            python-version: "3.13"
+          - runner: ubuntu-24.04-arm
+            target: linux-aarch64
+            python-version: "3.14"
           - runner: macos-14
             target: osx-arm64
+            python-version: "3.10"
+          - runner: macos-14
+            target: osx-arm64
+            python-version: "3.11"
+          - runner: macos-14
+            target: osx-arm64
+            python-version: "3.12"
+          - runner: macos-14
+            target: osx-arm64
+            python-version: "3.13"
+          - runner: macos-14
+            target: osx-arm64
+            python-version: "3.14"
           - runner: windows-latest
             target: win-64
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+            python-version: "3.10"
+          - runner: windows-latest
+            target: win-64
+            python-version: "3.11"
+          - runner: windows-latest
+            target: win-64
+            python-version: "3.12"
+          - runner: windows-latest
+            target: win-64
+            python-version: "3.13"
+          - runner: windows-latest
+            target: win-64
+            python-version: "3.14"
 
     defaults:
       run:
