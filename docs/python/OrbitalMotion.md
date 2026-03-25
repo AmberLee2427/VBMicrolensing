@@ -125,7 +125,70 @@ The relations of these parameters to the conventional orbital elements are shown
 The full three-body problem requires sophisticated integration of coupled differential equations. However, in some limits, we can neglect some interaction terms and use Keplerian orbital motion. Since the number of parameters is already very large, in VBMicrolensing we introduce a function `TripleLightCurveOrbital` with a minimal set of orbital parameters only for the second lens relative to the first lens assuming **circular motion**. For the third lens, we offer two choices: 
 -  **coplanar circular orbital motion** around the first lens (appropriate for multi-planetary systems);
 -  **static third lens** (useful when the third lens generates a very short localized anomaly while we are sensitive to the orbital motion of the two main bodies).
-Note that the coplanarity assumption allows to derive the components of the orbital motion of the third lens from the components of the orbital motion of the second lens, given the relative projected position (specified through the parameters $s_3$ and $\psi$), and the third Kepler's law.
 
+Note that the coplanarity assumption allows to derive the components of the orbital motion of the third lens from the components of the orbital motion of the second lens, given the relative projected position (specified through the parameters $s_{13}$ and $\psi$), and the third Kepler's law.
+
+```
+import VBMicrolensing
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+VBM = VBMicrolensing.VBMicrolensing()
+
+
+s = 0.9       # Separation of the first planet
+q = 0.001       # Mass ratio of first planet
+u0 = 0.1       # Impact parameter with respect to center of mass
+alpha = 1.0       # Angle of the source trajectory
+rho = 0.01       # Source radius
+tE = 30.0      # Einstein time in days
+t0 = 7500      # Time of closest approach to center of mass
+s2 = 1.5       # Separation of second planet
+q2 = 0.0003    # Mass ratio of second planet
+psi = 0.6      # Position angle of second planet with respect to first
+paiN = 0.3     # North component of the parallax vector
+paiE = -0.2     # East component of the parallax vector
+gamma1 = 0.0000011   # Orbital motion component ds/dt/s of the second lens
+gamma2 = 0.005   # Orbital motion component dalpha/dt of the second lens
+gamma3 = 0.005   # Orbital motion component dsz/dt/s of the second lens
+
+t = np.linspace(t0, t0+18*tE, 300) # Array of times
+VBM.SetObjectCoordinates("17:59:02.3 -29:04:15.2") # Assign RA and Dec to our microlensing event
+
+# Array of parameters. Note that s, q, rho and tE are in log-scale
+pr = [math.log(s), math.log(q), u0, alpha, math.log(rho), math.log(tE), t0, math.log(s2), math.log(q2), psi, 
+      paiN, paiE, gamma1, gamma2, gamma3]
+
+# Calculate the light curve
+results = VBM.TripleLightCurveOrbital(pr,t)
+```
+
+`TripleLightCurveOrbital` returns a list containing the magnifications, the source positions ($y_1$ and $y_2$), the separations of the second lens $s_{12}$, the separations of the third lens $s_{13}$, the position angle of the third lens from the second lens $\psi$. All these quantities vary in time and are reported in the results list and accessible to the user.
+
+It is important to note that similarly to the `BinaryLightCurveOrbital` function, the reference frame always aligns the horizontal axis with the line joining the second lens to the first. So, it is a frame co-rotating with the first pair of lenses. If we want to go back to an inertial frame we can repeat the calculation with the `TripleLightCurveParallax` function and rotate back as in the following example
+
+```
+resultspar = VBM.TripleLightCurveParallax(pr,t)
+
+seps = np.array(results[3])
+seps2 = np.array(results[4])
+psis = np.array(results[5])
+# Calculate the rotation angle at each time
+phi1 = np.array([np.arctan2(y2,y1) for (y1,y2) in zip(results[1],results[2])]) - np.array([np.arctan2(y2,y1) for (y1,y2) in zip(resultspar[1],resultspar[2])])
+
+plt.plot(seps*np.cos(phi1),seps*np.sin(phi1),'b') # Plot the orbit of the first planet
+plt.plot(seps2*np.cos(phi1+psis),seps2*np.sin(phi1+psis),'g') # Plot the orbit of the second planet
+plt.plot([(seps*np.cos(phi1))[0]],[(seps*np.sin(phi1))[0]],'or') # Red dot at starting point
+plt.plot([(seps2*np.cos(phi1+psi))[0]],[(seps2*np.sin(phi1+psi))[0]],'or') # Red dot at starting point
+plt.plot([0],[0],'or') # Red dot at first lens
+ran = 2
+plt.xlim(-ran,ran)
+plt.ylim(-ran,ran)
+```
+
+<img src="figures/multiplanetsorbit.png" width = 400>
+
+In order to keep the third lens static, just set `VBM.block_tertiary_lens = True` before the calculation.
 
 [Go to **Binary Sources**](BinarySources.md)
