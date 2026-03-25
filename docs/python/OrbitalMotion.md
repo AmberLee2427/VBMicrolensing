@@ -125,5 +125,7 @@ The relations of these parameters to the conventional orbital elements are shown
 The full three-body problem requires sophisticated integration of coupled differential equations. However, in some limits, we can neglect some interaction terms and use Keplerian orbital motion. Since the number of parameters is already very large, in VBMicrolensing we introduce a function `TripleLightCurveOrbital` with a minimal set of orbital parameters only for the second lens relative to the first lens assuming **circular motion**. For the third lens, we offer two choices: 
 -  **coplanar circular orbital motion** around the first lens (appropriate for multi-planetary systems);
 -  **static third lens** (useful when the third lens generates a very short localized anomaly while we are sensitive to the orbital motion of the two main bodies).
+Note that the coplanarity assumption allows to derive the components of the orbital motion of the third lens from the components of the orbital motion of the second lens, given the relative projected position (specified through the parameters $s_3$ and $\psi$), and the third Kepler's law.
+
 
 [Go to **Binary Sources**](BinarySources.md)
