@@ -157,7 +157,7 @@ t = np.linspace(t0, t0+18*tE, 300) # Array of times
 VBM.SetObjectCoordinates("17:59:02.3 -29:04:15.2") # Assign RA and Dec to our microlensing event
 
 # Array of parameters. Note that s, q, rho, tE, s13 and q3 are in log-scale
-pr = [math.log(s), math.log(q), u0, alpha, math.log(rho), math.log(tE), t0, math.log(s2), math.log(q2), psi, 
+pr = [math.log(s), math.log(q), u0, alpha, math.log(rho), math.log(tE), t0, math.log(s13), math.log(q3), psi, 
       paiN, paiE, gamma1, gamma2, gamma3]
 
 # Calculate the light curve
