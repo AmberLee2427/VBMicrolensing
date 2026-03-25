@@ -47,7 +47,6 @@ pr = [math.log(s), math.log(q), u0, alpha, math.log(rho), math.log(tE), t0, paiN
 
 t = np.linspace(t0-tE, t0+tE, 300) # Array of times
 
-VBM.parallaxsystem = 1       # Set parallax system to North-East
 VBM.SetObjectCoordinates("17:59:02.3 -29:04:15.2") # Assign RA and Dec to our microlensing event
 
 magnifications, y1, y2 = VBM.BinaryLightCurve(pr,t)      # Calculation of static binary-lens light curve
