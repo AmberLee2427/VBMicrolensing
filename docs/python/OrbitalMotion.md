@@ -2,9 +2,11 @@
 
 # Orbital motion
 
-Binary lenses orbit around the common center of mass. If the microlensing event is long enough, we should take orbital motion into account. However, to first order, microlensing is only sensitive to changes in the projected separation and orientation of the binary lenses, while most orbital parameters remain unconstrained. Rather than adding too many dimensions to our parameter space, in order to describe the subtle deviations in our microlensing event, it can be sufficient to restrict to circular orbits.
+Binary and triple lenses orbit around the common center of mass. If the microlensing event is long enough, we should take orbital motion into account. However, to first order, microlensing is only sensitive to changes in the projected separation and orientation of the binary lenses, while most orbital parameters remain unconstrained. Rather than adding too many dimensions to our parameter space, in order to describe the subtle deviations in our microlensing event, it might be sufficient to restrict to circular orbits. Let us start by binary lenses and then extend to triple lenses
 
-VBMicrolensing offers two functions:
+## Orbital motion in binary lenses
+
+For binary lenses, VBMicrolensing offers two functions:
 
 ```
 BinaryLightCurveOrbital
@@ -117,5 +119,11 @@ $a_s \equiv \frac{a}{\sqrt{s_z^2+s^2}}$, the ratio of the semimajor axis to the 
 The function `BinaryLightCurveKepler` therefore accepts a total of 14 parameters and its use is similar to that of `BinaryLightCurveOrbital`. So we do not repeat the example here.
 
 The relations of these parameters to the conventional orbital elements are shown in detail in the appendix of [Bozza, Khalouei and Bachelet (2021)](https://ui.adsabs.harvard.edu/abs/2021MNRAS.505..126B/abstract).
+
+## Orbital motion in triple lenses
+
+The full three-body problem requires sophisticated integration of coupled differential equations. However, in some limits, we can neglect some interaction terms and use Keplerian orbital motion. Since the number of parameters is already very large, in VBMicrolensing we introduce a function `TripleLightCurveOrbital` with a minimal set of orbital parameters only for the second lens relative to the first lens assuming **circular motion**. For the third lens, we offer two choices: 
+-  **coplanar circular orbital motion** around the first lens (appropriate for multi-planetary systems);
+-  **static third lens** (useful when the third lens generates a very short localized anomaly while we are sensitive to the orbital motion of the two main bodies).
 
 [Go to **Binary Sources**](BinarySources.md)
