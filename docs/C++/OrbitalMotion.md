@@ -2,9 +2,11 @@
 
 # Orbital motion
 
-Binary lenses orbit around the common center of mass. If the microlensing event is long enough, we should take orbital motion into account. However, to first order, microlensing is only sensitive to changes in the projected separation and orientation of the binary lenses, while most orbital parameters remain unconstrained. Rather than adding too many dimensions to our parameter space, in order to describe the subtle deviations in our microlensing event, it can be sufficient to restrict to circular orbits.
+Binary and triple lenses orbit around the common center of mass. If the microlensing event is long enough, we should take orbital motion into account. However, to first order, microlensing is only sensitive to changes in the projected separation and orientation of the binary lenses, while most orbital parameters remain unconstrained. Rather than adding too many dimensions to our parameter space, in order to describe the subtle deviations in our microlensing event, it might be sufficient to restrict to circular orbits. Let us start by binary lenses and then extend to triple lenses
 
-VBMicrolensing offers two functions:
+## Orbital motion in binary lenses
+
+For binary lenses, VBMicrolensing offers two functions:
 
 ```
 BinaryLightCurveOrbital
@@ -28,7 +30,6 @@ double pr[12]; // Array of parameters
 double s, q, u0, alpha, rho, tE, t0, paiN, paiE, g1, g2, g3, t;
 
 VBM.SetObjectCoordinates("OB151212coords.txt", ".");  // Read target coordinates in file
-VBM.parallaxsystem = 1; // Here we use North-East components for parallax
 
 u0 = -0.01; // Impact parameter
 t0 = 7550.4; // Time of closest approach to the center of mass
@@ -99,5 +100,62 @@ $a_s \equiv \frac{a}{\sqrt{s_z^2+s^2}}$, the ratio of the semimajor axis to the 
 The function `BinaryLightCurveKepler` therefore accepts a total of 14 parameters and its use is similar to that of `BinaryLightCurveOrbital`. So we do not repeat the example here.
 
 The relations of these parameters to the conventional orbital elements are shown in detail in the appendix of [Bozza, Khalouei and Bachelet (2021)](https://ui.adsabs.harvard.edu/abs/2021MNRAS.505..126B/abstract).
+
+## Orbital motion in triple lenses
+
+The full three-body problem requires sophisticated integration of coupled differential equations. However, in some limits, we can neglect some interaction terms and use Keplerian orbital motion. Since the number of parameters is already very large, in VBMicrolensing we introduce a function `TripleLightCurveOrbital` with a minimal set of orbital parameters only for the second lens relative to the first lens assuming **circular motion**. For the third lens, we offer two choices: 
+-  **coplanar circular orbital motion** around the first lens (appropriate for multi-planetary systems);
+-  **static third lens** (useful when the third lens generates a very short localized anomaly while we are sensitive to the orbital motion of the two main bodies).
+
+Note that the coplanarity assumption allows to derive the components of the orbital motion of the third lens from the components of the orbital motion of the second lens, given the relative projected position (specified through the parameters $s_{13}$ and $\psi$), and the third Kepler's law.
+
+```
+VBMicrolensing VBM; // Declare instance to VBMicrolensing
+
+double pr[15]; // Array of parameters
+double s, q, u0, alpha, rho, tE, t0, s13, q3, psi, paiN, paiE, g1, g2, g3, t;
+
+VBM.SetObjectCoordinates("OB151212coords.txt", ".");  // Read target coordinates in file
+
+u0 = -0.01; // Impact parameter
+t0 = 7550.4; // Time of closest approach to the center of mass
+tE = 100.3; // Einstein time
+rho = 0.01; // Source radius
+s = 0.8; // Separation between the two lenses
+q = 0.1; // Mass ratio
+alpha = 0.53; // Angle between a vector pointing to the left and the source velocity
+s13 = 1.5       // Separation of second planet
+q3 = 0.0003    // Mass ratio of second planet
+psi = 0.6      // Position angle of second planet with respect to first
+
+paiN = 0.3; // Parallax component in the North direction
+paiE = 0.13; // Parallax component in the East direction
+
+g1 = 0.001; // Orbital component gamma1 for the second lens
+g2 = -0.002; // Orbital component gamma2 for the second lens
+g3 = 0.0011; // Orbital component gamma3 for the second lens
+
+pr[0] = log(s);
+pr[1] = log(q);
+pr[2] = u0;
+pr[3] = alpha;
+pr[4] = log(rho);
+pr[5] = log(tE);
+pr[6] = t0;
+pr[7] = log(s13);
+pr[8] = log(q3);
+pr[9] = psi;
+pr[10] = paiN;
+pr[11] = paiE;
+pr[12] = g1;
+pr[13] = g2;
+pr[14] = g3;
+
+t = 7551.6; // Time at which we want to calculate the magnification
+
+Mag = VBM.TripleLightCurveOrbital(pr, t); // Calculates the Triple Lens magnification at time t with parameters in pr
+```
+
+In order to keep the third lens static, just set `VBM.block_tertiary_lens = True` before the calculation.
 
 [Go to **Binary Sources**](BinarySources.md)
