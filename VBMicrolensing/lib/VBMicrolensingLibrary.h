@@ -1,4 +1,4 @@
-// VBMicrolensing v5.4 (2026)
+// VBMicrolensing v5.5 (2026)
 //
 // This code has been developed by Valerio Bozza (University of Salerno) and collaborators.
 // Check the repository at https://github.com/valboz/VBMicrolensing
@@ -150,6 +150,7 @@ public:
 	bool astrometry;
 	bool turn_off_secondary_source;
 	bool turn_off_secondary_lens;
+	bool block_tertiary_lens;
 	bool ESPLoff;
 	bool t_in_HJD;
 
@@ -249,6 +250,7 @@ public:
 
 	void TripleLightCurve(double* parameters, double* t_array, double* mag_array, double* y1_array, double* y2_array, int np);
 	void TripleLightCurveParallax(double* parameters, double* t_array, double* mag_array, double* y1_array, double* y2_array, int np);
+	void TripleLightCurveOrbital(double* parameters, double* t_array, double* mag_array, double* y1_array, double* y2_array, double* seps_array, double* seps2_array, double* psi_array, int np);
 	void LightCurve(double* parameters, double* t_array, double* mag_array, double* y1_array, double* y2_array, int np, int nl);
 
 	// Old (v1) light curve functions, for a single calculation
@@ -275,6 +277,7 @@ public:
 
 	double TripleLightCurve(double* parameters, double t);
 	double TripleLightCurveParallax(double* parameters, double t);
+	double TripleLightCurveOrbital(double* parameters, double t);
 
 	// Astrometric functions
 	void CombineCentroids(double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* c1ltot, double* c2tot, double g, int np);
@@ -286,6 +289,7 @@ public:
 	void BinSourceAstroLightCurveXallarap(double* parameters, double* t_array, double* mag_array, double* centroid_s1_array, double* centroid_s2_array, double* centroid_l1_array, double* centroid_l2_array, double* y1_array, double* y2_array, double* y1_array2, double* y2_array2, int np);
 	void BinSourceBinLensAstroLightCurve(double* parameters, double* t_array, double* mag_array, double* centroid_s1_array, double* centroid_s2_array, double* centroid_l1_array, double* centroid_l2_array, double* y1_array, double* y2_array, double* y1_array2, double* y2_array2, double* seps_array, int np);
 	void TripleAstroLightCurve(double* parameters, double* t_array, double* mag_array, double* centroid_s1_array, double* centroid_s2_array, double* centroid_l1_array, double* centroid_l2_array, double* y1_array, double* y2_array, int np);
+	void TripleAstroLightCurveOrbital(double* parameters, double* t_array, double* mag_array, double* centroid_s1_array, double* centroid_s2_array, double* centroid_l1_array, double* centroid_l2_array, double* y1_array, double* y2_array, double* seps_array, double* seps2_array, double* psi_array, int np);
 
 	// Constructor and destructor
 
@@ -613,6 +617,5 @@ inline double _point::operator-(_point p2) {
 
 
 #endif
-
 
 

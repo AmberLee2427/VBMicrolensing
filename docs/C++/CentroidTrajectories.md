@@ -32,6 +32,8 @@ The lens parallax and proper motion components are obtained from the source para
 
 - **TripleAstroLightCurve(parameters, times, magnifications, source_centroids_dec, source_centroids_ra, lens_centroids_dec, lens_centroids_ra, y1_list, y2_list, np)** <br/>extending TripleLightCurveParallax
 
+- **TripleAstroLightCurveOrbital(parameters, times, magnifications, source_centroids_dec, source_centroids_ra, lens_centroids_dec, lens_centroids_ra, y1_list, y2_list, sep_list, sep2_list, psi_list, np)** <br/>extending TripleLightCurveOrbital
+
 Similarly to their corresponding original functions, these new functions take arrays for the parameters list and the observation times as arguments. The results of the calculations are stored in the arrays provided in the argument list. These include the coordinates for the centroid of the magnified source, the coordinates for the lens and the source position in the reference frame centered in the lens, the separations between orbiting binary lenses. The number of points in the arrays is given as the last parameter np.
 
 Here is a full example with the `PSPLAstroLightCurve`. For the other functions we just have to change the standard parameters accordingly, as explained in the corresponding sections [Light Curves](LightCurves.md), [Parallax](Parallax.md), [Orbital Motion](OrbitalMotion.md), [Binary Sources](BinarySources.md).
@@ -90,5 +92,7 @@ VBM.CombineCentroids(mags, c1s, c2s, c1l, c2l, c1comb, c2comb, g, np);
 The lens centroid for binary lenses is not the center of mass but the center of light, which depends on the flux ratio, if both components are luminous. The flux ratio between the two lenses is determined using the mass ratio parameter $q$ and applying a mass-luminosity relation: $FR = q^p$, where $p$ can be set by the property `VBM.lens_mass_luminosity_exponent`. The default value is 4. This works also for planetary systems, since the flux ratio would be negligible. If we want to force the secondary to be dark, then we may set `VBM.turn_off_secondary_lens = true`. In this way, all the lens flux will come from the primary.
 
 For binary sources, the centroid is determined using the flux ratio as already explained in [Binary Sources](BinarySources.md).
+
+For triple lenses, the same relations apply and it is possible to turn off the secondary lens.
 
 [Go to **Advanced control**](AdvancedControl.md)
