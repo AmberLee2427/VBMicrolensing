@@ -26,7 +26,19 @@ If specifically relevant to your work, please also cite
 
 ### Python
 
-The easiest way to install `VBMicrolensing` is through `pip install VBMicrolensing`
+The easiest way to install `VBMicrolensing` is through `pip install VBMicrolensing`.
+
+Pre-built packages are available on [conda-forge](https://anaconda.org/conda-forge/vbmicrolensing) under the name `vbmicrolensing`:
+
+```bash
+conda install -c conda-forge vbmicrolensing
+```
+
+If you use [mamba](https://mamba.readthedocs.io/) or [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+
+```bash
+mamba install -c conda-forge vbmicrolensing
+```
 
 In alternative, in order to use the latest build, clone this GitHub repository on your computer, enter your local copy of the repository and run
 ```
