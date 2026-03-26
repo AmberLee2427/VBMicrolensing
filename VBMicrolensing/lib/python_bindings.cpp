@@ -64,6 +64,8 @@ PYBIND11_MODULE(VBMicrolensing, m) {
         "Flux of secondary source is set to zero.");
     vbm.def_readwrite("turn_off_secondary_lens", &VBMicrolensing::turn_off_secondary_lens,
         "Flux of secondary lens is set to zero.");
+    vbm.def_readwrite("block_tertiary_lens", &VBMicrolensing::block_tertiary_lens,
+        "Block third lens in orbital motion calculation.");
     vbm.def_readwrite("t_in_HJD", &VBMicrolensing::t_in_HJD,
         "Set if t is given in HJD");
     vbm.def_readwrite("corrquad", &VBMicrolensing::corrquad,
@@ -1146,6 +1148,50 @@ PYBIND11_MODULE(VBMicrolensing, m) {
                 [Magnification array, source position y1 array, source position y2 array]
             )mydelimiter");
 
+    vbm.def("TripleLightCurveOrbital",
+        [](VBMicrolensing& self, std::vector<double> params, std::vector<double> times)
+        {
+            if (!self.AreCoordinatesSet()) {
+                py::print("Use SetObjectCoordinates before any parallax calculation!");
+                std::vector< std::vector<double> > results{  };
+                return results;
+            }
+            if (self.satellite > self.nsat) {
+                py::print("! Ephemerides table not available for this satellite!");
+                std::vector< std::vector<double> > results{  };
+                return results;
+            }
+            std::vector<double> mags(times.size());
+            std::vector<double> y1s(times.size());
+            std::vector<double> y2s(times.size());
+            std::vector<double> seps(times.size());
+            std::vector<double> seps2(times.size());
+            std::vector<double> psis(times.size());
+            self.TripleLightCurveOrbital(params.data(), times.data(), mags.data(),
+                y1s.data(), y2s.data(), seps.data(), seps2.data(), psis.data(), times.size());
+            std::vector< std::vector<double> > results{ mags,y1s,y2s, seps, seps2, psis };
+            if (self.parallaxextrapolation > 0) py::print("Input time is outside range of lookup tables: extrapolation is used.");
+            return results;
+        },
+        R"mydelimiter(
+            Static binary lens light curve for a given set of parameters.
+            Uses the BinaryMag2 function.
+
+            Parameters
+            ----------
+            params : list[float]
+                List of parameters [log(s12), log(q2), u0, alpha, log(rho), log(tE), t0, log(s13), log(q3), psi,px1,px2, w1, w2, w3]
+            times : list[float] 
+                Array of times at which the magnification is calculated.
+ 
+            Returns
+            -------
+            results: list[list[float],list[float],list[float],list[float],list[float],list[float]] 
+                [Magnification array, source position y1 array, source position y2 array,
+                 separation between first and second mass, separation between first and third mass,
+                 angle between third and second mass]
+            )mydelimiter");
+
     vbm.def("LightCurve",
         [](VBMicrolensing& self, std::vector<double> params, std::vector<double> times)
         {
@@ -1637,6 +1683,66 @@ PYBIND11_MODULE(VBMicrolensing, m) {
                     centroid of lens N array, centroid of lens E array,
                     source position y1 array, source position y2 array]
             )mydelimiter");
+
+    vbm.def("TripleAstroLightCurveOrbital",
+        [](VBMicrolensing& self, std::vector<double> params, std::vector<double> times)
+        {
+            if (!self.AreCoordinatesSet()) {
+                py::print("Use SetObjectCoordinates before any parallax calculation!");
+                std::vector< std::vector<double> > results{  };
+                return results;
+            }
+            if (self.satellite > self.nsat) {
+                py::print("! Ephemerides table not available for this satellite!");
+                std::vector< std::vector<double> > results{  };
+                return results;
+            }
+            std::vector<double> mags(times.size());
+            std::vector<double> c1s(times.size());
+            std::vector<double> c2s(times.size());
+            std::vector<double> c1l(times.size());
+            std::vector<double> c2l(times.size());
+            std::vector<double> y1s(times.size());
+            std::vector<double> y2s(times.size());
+            std::vector<double> seps(times.size());
+            std::vector<double> seps2(times.size());
+            std::vector<double> psis(times.size());
+            self.astrometry = true;
+            self.parallaxsystem = 1;
+            self.TripleAstroLightCurveOrbital(params.data(), times.data(), mags.data(), c1s.data(), c2s.data(), c1l.data(), c2l.data(),
+                y1s.data(), y2s.data(), seps.data(), seps2.data(), psis.data(), times.size());
+            std::vector< std::vector<double> > results{ mags, c1s, c2s, c1l, c2l,y1s,y2s, seps, seps2, psis};
+            if (self.parallaxextrapolation > 0) py::print("Input time is outside range of lookup tables: extrapolation is used.");
+            return results;
+        },
+        R"mydelimiter(
+            Triple light curve and astrometry for a full array of observations.
+
+            Parameters
+            ----------
+            params : list[float]
+                List of parameters [log_s, log_q, u0, alpha, log_rho, log_tE, t0, 
+                                    log(s13), log(q3), psi, 
+                                    w1, w2, w3      # Velocity components of the first planet
+                                                    # (second planet is assumed to be coplanar)
+                                    paiN, paiE,     #components of the parallax vector
+                                    muS_N, muS_E,   # proper motion components of the source (mas/yr)
+                                    pai_S,          # parallax of the source (mas)
+                                    thetaE          # Einstein angle (mas) 
+                                    ] 
+            times : list[float] 
+                Array of times at which the magnification is calculated.
+ 
+            Returns
+            -------
+            results: list[list[float],list[float],list[float],list[float],list[float],list[float],list[float],list[float],list[float],list[float]] 
+                [Magnification array,
+                    centroid of images N array, centroid of images E array, 
+                    centroid of lens N array, centroid of lens E array,
+                    source position y1 array, source position y2 array,
+                    separation between first and second mass, separation between first and third mass,
+                    angle between second and third mass]
+            )mydelimiter");
     // Other functions
 
 
@@ -1967,8 +2073,8 @@ PYBIND11_MODULE(VBMicrolensing, m) {
             roots: list[complex] 
                 List of roots
             )mydelimiter");
-    
- vbm.def("BinaryMag0_shear",
+
+    vbm.def("BinaryMag0_shear",
         (double (VBMicrolensing::*)(double, double, double, double, double, double, double))
         & VBMicrolensing::BinaryMag0_shear,
         py::return_value_policy::reference,

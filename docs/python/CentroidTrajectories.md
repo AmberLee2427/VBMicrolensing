@@ -42,6 +42,9 @@ returns `[magnifications, source_centroid_dec, source_centroid_ra, lens_centroid
 - **TripleAstroLightCurve(parameters, times)**, extending TripleLightCurveParallax <br/>
 returns `[magnifications, source_centroid_dec, source_centroid_ra, lens_centroid_dec, lens_centroid_ra, y1_list, y2_list]`
 
+- **TripleAstroLightCurveOrbital(parameters, times)**, extending TripleLightCurveOrbital <br/>
+returns `[magnifications, source_centroid_dec, source_centroid_ra, lens_centroid_dec, lens_centroid_ra, y1_list, y2_list, separations_list, separations2_list, psi_list]`
+
 Similarly to their corresponding original functions, these new functions take a parameters list and a list of observation times as arguments. The output contains a list of magnifications calculated at the epochs in `times`, centroid positions in (dec,ra) for source and lens, and source positions in the lens reference frame.
 
 Here is a full example with the `PSPLAstroLightCurve`. For the other functions we just have to change the standard parameters accordingly, as explained in the corresponding sections [Light Curves](LightCurves.md), [Parallax](Parallax.md), [Orbital Motion](OrbitalMotion.md), [Binary Sources](BinarySources.md).
@@ -148,5 +151,7 @@ In this figure the blue line is the centroid trajectory for zero blending (basic
 The lens centroid for binary lenses is not the center of mass but the center of light, which depends on the flux ratio, if both components are luminous. The flux ratio between the two lenses is determined using the mass ratio parameter $q$ and applying a mass-luminosity relation: $FR = q^p$, where $p$ can be set by the property `VBM.lens_mass_luminosity_exponent`. The default value is 4. This works also for planetary systems, since the flux ratio would be negligible. If we want to force the secondary to be dark, then we may set `VBM.turn_off_secondary_lens = True`. In this way, all the lens flux will come from the primary.
 
 For binary sources, the centroid is determined using the flux ratio as already explained in [Binary Sources](BinarySources.md).
+
+For triple lenses, the same relations apply and it is possible to turn off the secondary lens.
 
 [Go to **Advanced control**](AdvancedControl.md)

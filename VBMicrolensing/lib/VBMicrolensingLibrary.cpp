@@ -1,4 +1,4 @@
-// VBMicrolensing v5.4 (2026)
+// VBMicrolensing v5.5 (2026)
 //
 // This code has been developed by Valerio Bozza (University of Salerno) and collaborators.
 // Check the repository at https://github.com/valboz/VBMicrolensing
@@ -331,6 +331,7 @@ VBMicrolensing::VBMicrolensing() {
 	CumulativeFunction = &VBDefaultCumulativeFunction;
 	SelectedMethod = Method::Nopoly;
 	turn_off_secondary_source = turn_off_secondary_lens = false;
+	block_tertiary_lens = false;
 	t_in_HJD = true;
 	parallaxextrapolation = 0;
 	//	testnewcoefs = true;
@@ -5442,7 +5443,7 @@ void VBMicrolensing::BinSourceBinLensAstroLightCurve(double* pr, double* ts, dou
 
 
 void VBMicrolensing::TripleAstroLightCurve(double* pr, double* ts, double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* y1s, double* y2s, int np) {
-	double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), di, mindi, u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
+	double rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11];
 	double q[3] = { 1, exp(pr[1]),exp(pr[8]) };
 	double FR[3];
 	double FRtot;
@@ -5485,6 +5486,119 @@ void VBMicrolensing::TripleAstroLightCurve(double* pr, double* ts, double* mags,
 		//else {
 		mags[i] = MultiMag2(y1s[i], y2s[i], rho);
 		//}
+		if (astrometry) {
+			c1s[i] = astrox1;
+			c2s[i] = astrox2;
+			ComputeCentroids(pr, ts[i], &c1s[i], &c2s[i], &c1l[i], &c2l[i]);
+			c1l[i] += (s[0].re * FR[0] + s[1].re * FR[1] + s[2].re * FR[2]) * cos(PosAng) / FRtot; // Flux center of the three lenses from origin
+			c2l[i] += (s[0].im * FR[0] + s[1].im * FR[1] + s[2].im * FR[2]) * sin(PosAng) / FRtot;
+		}
+
+	}
+}
+
+
+void VBMicrolensing::TripleAstroLightCurveOrbital(double* pr, double* ts, double* mags, double* c1s, double* c2s, double* c1l, double* c2l, double* y1s, double* y2s, double* seps, double* seps2, double* psis, int np) {
+	double s1 = exp(pr[0]), rho = exp(pr[4]), tn, tE_inv = exp(-pr[5]), u, u0 = pr[2], t0 = pr[6], pai1 = pr[10], pai2 = pr[11], w1 = pr[12], w2 = pr[13], w3 = pr[14];
+	double q[3] = { 1, exp(pr[1]),exp(pr[8]) }, s2 = exp(pr[7]);
+	double FR[3];
+	double FRtot;
+	complex s[3];
+	double salpha = sin(pr[3]), calpha = cos(pr[3]), sbeta = sin(pr[9]), cbeta = cos(pr[9]);
+	double w, phi0, inc, phi, Cinc, Sinc, Cphi, Sphi, Cphi0, Sphi0, pphi0, COm, SOm, s_true, pphi;
+	double w13, w123, den, den0;
+	double pphi0_2, phi0_2, s2_true, den0_2, Cphi0_2, Sphi0_2, w_2, phi_2, Cphi_2, Sphi_2, den_2, pphi_2;
+	iastro = 15;
+//	dPosAng = 0;
+	t0old = t0parold = 1.e200;
+	parallaxextrapolation = 0;
+
+	if (astrometry) {
+		FR[0] = 1;
+		FR[1] = (turn_off_secondary_lens) ? 0 : exp(pr[1] * mass_luminosity_exponent);
+		FR[2] = exp(pr[8] * mass_luminosity_exponent);
+		FRtot = FR[0] + FR[1] + FR[2];
+	}
+
+	w13 = w1 * w1 + w3 * w3;
+	w123 = sqrt(w13 + w2 * w2);
+	w13 = sqrt(w13);
+	if (w13 > 1.e-8) {
+		w3 = (w3 > 1.e-8) ? w3 : 1.e-8;
+		w = w3 * w123 / w13;
+		inc = acos(w2 * w3 / w13 / w123);
+		phi0 = atan2(-w1 * w123, w3 * w13);
+	}
+	else {
+		w = w2;
+		inc = 0.;
+		phi0 = 0.;
+	}
+	Cphi0 = cos(phi0);
+	Sphi0 = sin(phi0);
+	Cinc = cos(inc);
+	Sinc = sin(inc);
+	den0 = sqrt(Cphi0 * Cphi0 + Cinc * Cinc * Sphi0 * Sphi0);
+	s_true = s1 / den0; // orbital radius
+	COm = (Cphi0 * calpha + Cinc * salpha * Sphi0) / den0;
+	SOm = (Cphi0 * salpha - Cinc * calpha * Sphi0) / den0;
+	pphi0 = atan2(Cinc * Sphi0, Cphi0);
+
+	pphi0_2 = pphi0 + pr[9];
+	phi0_2 = atan2(sin(pphi0_2)/Cinc, cos(pphi0_2)); // Impose co-planarity and calculate orbital phase
+	Cphi0_2 = cos(phi0_2);
+	Sphi0_2 = sin(phi0_2);
+	den0_2 = sqrt(Cphi0_2 * Cphi0_2 + Cinc * Cinc * Sphi0_2 * Sphi0_2);
+	s2_true = s2/den0_2;  // Orbital radius of second planet
+	w_2 = (block_tertiary_lens)? 0 : w * pow(s2_true / s_true, -1.5); // Third Kepler's law
+
+
+	for (int i = 0; i < np; i++) {
+		ComputeParallax(ts[i], t0);
+
+		phi = (ts[i] + lighttravel - t0 - lighttravel0) * w + phi0;
+		Cphi = cos(phi);
+		Sphi = sin(phi);
+		den = sqrt(Cphi * Cphi + Cinc * Cinc * Sphi * Sphi);
+		seps[i] = s_true * den; // projected separation at time ts[i]
+		pphi = atan2(Cinc * Sphi, Cphi);
+
+		phi_2 = (ts[i] + lighttravel - t0 - lighttravel0) * w_2 + phi0_2;
+		Cphi_2 = cos(phi_2);
+		Sphi_2 = sin(phi_2);
+		den_2 = sqrt(Cphi_2 * Cphi_2 + Cinc * Cinc * Sphi_2 * Sphi_2);
+		seps2[i] = s2_true * den_2; // projected separation at time ts[i]
+		pphi_2 = atan2(Cinc * Sphi_2, Cphi_2);
+		psis[i] = pphi_2 - pphi;
+		cbeta = cos(psis[i]);
+		cbeta = sin(psis[i]);
+
+		u = u0 + pai1 * Et[1] - pai2 * Et[0];
+		tn = (ts[i] + lighttravel - t0 - lighttravel0) * tE_inv + pai1 * Et[0] + pai2 * Et[1];
+		y1s[i] = (Cphi * (u * SOm - tn * COm) + Cinc * Sphi * (u * COm + tn * SOm)) / den;
+		y2s[i] = (-Cphi * (u * COm + tn * SOm) - Cinc * Sphi * (tn * COm - u * SOm)) / den;
+
+		//s[1] = seps[i]; // Remember frame is rotated so as to have first planet always to the right
+		//s[2] = seps2[i] * complex(cbeta, sbeta);
+		//s[0] = -(s[1] * q[1] + s[2] * q[2]) / (q[0] + q[1] + q[2]); // - center of mass
+		//for (int i = 1; i < 3; i++) {
+		//	s[i] = s[i] +s[0];
+		//}
+
+		// Frame is anchored to center of mass of the first two objects
+		// We are implicitly assuming that the third object is negligible
+		// Since we are neglecting mutual interactions between planets, 
+		// this is still consistent at zero order in planets mass.
+		s[0] = seps[i] / (q[0] + q[1]); 
+		s[1] = s[0] * q[0];
+		s[0] = -q[1] * s[0];
+		s[2] = seps2[i] * complex(cbeta, sbeta) + s[0];
+
+		SetLensGeometry(3, q, s);
+
+		mags[i] = MultiMag2(y1s[i], y2s[i], rho);
+		dPosAng = -pphi + pphi0;
+
 		if (astrometry) {
 			c1s[i] = astrox1;
 			c2s[i] = astrox2;
@@ -5894,6 +6008,11 @@ void VBMicrolensing::TripleLightCurveParallax(double* pr, double* ts, double* ma
 	TripleAstroLightCurve(pr, ts, mags, NULL, NULL, NULL, NULL, y1s, y2s, np);
 }
 
+void VBMicrolensing::TripleLightCurveOrbital(double* pr, double* ts, double* mags, double* y1s, double* y2s, double* seps, double* seps2, double* psis, int np) {
+	astrometry = false;
+	TripleAstroLightCurveOrbital(pr, ts, mags, NULL, NULL, NULL, NULL, y1s, y2s, seps, seps2, psis, np);
+}
+
 void VBMicrolensing::LightCurve(double* pr, double* ts, double* mags, double* y1s, double* y2s, int np, int nl) {
 	double rho = exp(pr[2]), tn, tE_inv = exp(-pr[1]), di, mindi;
 
@@ -6063,7 +6182,11 @@ double VBMicrolensing::TripleLightCurveParallax(double* pr, double t) {
 	return mag;
 }
 
-
+double VBMicrolensing::TripleLightCurveOrbital(double* pr, double t) {
+	double mag, y1, y2, s, s2, psi;
+	TripleLightCurveOrbital(pr, &t, &mag, &y1, &y2, &s, &s2, &psi, 1);
+	return mag;
+}
 
 
 #pragma endregion
@@ -6495,7 +6618,6 @@ void VBMicrolensing::SetObjectCoordinates(char* modelfile, char* sateltabledir) 
 
 				// Reading data
 				if (f) {
-					double tcur;
 					for (int id = 0; id < ndatasat[ic]; id++) {
 
 						if (fscanf(f, "%lf %lf %lf %lf %lf", &(tsat[ic][id]), &RA, &Dec, &dis, &phiprec) == 5) {
@@ -9791,8 +9913,5 @@ void _thetas::remove(_theta* stheta) {
 
 
 #pragma endregion
-
-
-
 
 
